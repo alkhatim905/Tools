@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_overtime,access_employee_overtime,model_employee_overtime,base.group_user,1,1,1,1
+access_accumulate_leaves,access_accumulate_leaves,model_accumulate_leaves,base.group_user,1,1,1,1
+access_accumulate_leaves_line,access_accumulate_leaves_line,model_accumulate_leaves_line,base.group_user,1,1,1,1
+access_accumulate_leaves_leaves_line,access_accumulate_leaves_leaves_line,model_accumulate_leaves_leaves_line,base.group_user,1,1,1,1

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="crm_lead_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group/field[@name='phone']" position="after">
+                <field name="service_type_ids" options="{'no_create': True, 'no_quick_create': True}"
+                       widget="many2many_tags"/>
+                <field name="location_url" widget="url"/>
+                <label for="area" string="Area"/>
+                <div class="o_row oe_inline">
+                    <field name="area"/>
+                    <span>Sq. Meter</span>
+                </div>
+            </xpath>
+            <xpath expr="//header/button[@name='action_set_won_rainbowman']" position="before">
+                <button string="New Calculation Sheet" name="generate_calculation_sheet" type="object" class="oe_highlight"
+                        attrs="{'invisible': ['&amp;', ('probability', '=', 0), ('active', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="sale_action_house_service" model="ir.actions.act_window">
+        <field name="name">Calculation Sheets</field>
+        <field name="res_model">house.service</field>
+        <field name="domain">[('lead_id', '=', active_id)]</field>
+        <field name="context">{'default_lead_id': active_id}</field>
+    </record>
+
+    <record id="crm_lead_remove_new_quotation_button" model="ir.ui.view">
+        <field name="name">crm.lead.remove.new.quotation.button</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale_crm.sale_action_quotations)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale_crm.sale_action_quotations)d']" position="after">
+                    <button class="oe_stat_button" type="action"
+                            name="%(sale_action_house_service)d" icon="fa-pencil-square-o"
+                            context="{'default_partner_id': partner_id}">
+                        <div class="o_stat_info">
+                            <field name="calculation_sheet_count" class="o_stat_value"/>
+                            <span class="o_stat_text"> Calculation Sheet(s) </span>
+                        </div>
+                    </button>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

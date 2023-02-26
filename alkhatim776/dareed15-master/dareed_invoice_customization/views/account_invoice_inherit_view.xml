@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="customer_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">customer.invoice.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="project_id" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                    <field name="service_type_ids" widget="many2many_tags" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                </xpath>
+              
+                <xpath expr="//label[@for='invoice_payment_term_id']" position="before">
+                    <field name="aging" string="Aging (Days)" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="customer_invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">customer.invoice.tree.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="move_type" invisible="1"/>
+                    <field name="project_id" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                    <field name="service_type_ids" widget="many2many_tags" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                    <field name="aging" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+
+                </xpath>
+            </field>
+        </record>
+        <record id="view_account_invoice_search" model="ir.ui.view">
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_move_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='partner']" position="after">
+                    <field name="move_type" invisible="1"/>
+                    <filter string="Aging"
+                            name="aging_char"
+                            context="{'group_by':'aging_char'}" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

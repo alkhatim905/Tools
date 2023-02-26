@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!--    <data>-->
+
+        <!--Quotation Internal Areas-->
+        <record id="basement_floor_cleaning" model="quotation.area">
+            <field name="name">نظافة البيسمنت</field>
+            <field name="name_en">Basement</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="ground_floor_cleaning" model="quotation.area">
+            <field name="name">الدور الارضى</field>
+            <field name="name_en">Ground Floor</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="first_floor_cleaning" model="quotation.area">
+            <field name="name">الدور الاول</field>
+            <field name="name_en">First Floor</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="second_floor_cleaning" model="quotation.area">
+            <field name="name">الدور الثانى</field>
+            <field name="name_en">Second Floor</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="external_facades_cleaning" model="quotation.area">
+            <field name="name">السطح الخارجى</field>
+            <field name="name_en">External Roof</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="facades_attachment_cleaning" model="quotation.area">
+            <field name="name">ملحق السطح</field>
+            <field name="name_en">Roof Annex</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="external_hosh_cleaning" model="quotation.area">
+            <field name="name">ارضيات الحوش الخارجي</field>
+            <field name="name_en">External Yard Floor</field>
+            <field name="type">internal</field>
+        </record>
+
+        <!--Quotation External Areas-->
+        <record id="brick_roof_cleaning" model="quotation.area">
+            <field name="name">سطح قرميد</field>
+            <field name="name_en">Brick Roof</field>
+            <field name="type">external</field>
+        </record>
+        <record id="car_shade_cleaning" model="quotation.area">
+            <field name="name">مظلة السيارة</field>
+            <field name="name_en">Car Shade</field>
+            <field name="type">external</field>
+        </record>
+        <record id="outside_annex_cleaning" model="quotation.area">
+            <field name="name">الملحق الخارجي</field>
+            <field name="name_en">Outside Annex</field>
+            <field name="type">external</field>
+        </record>
+        <record id="outside_yard_floor_cleaning" model="quotation.area">
+            <field name="name">أرضيات الحوش الخارجي</field>
+            <field name="name_en">Outside Yard Floor</field>
+            <field name="type">external</field>
+        </record>
+        <record id="skylight_cleaning" model="quotation.area">
+            <field name="name">نظافة السكاى لايت</field>
+            <field name="name_en">Skylight</field>
+            <field name="type">external</field>
+        </record>
+        <record id="swimming_pool_cleaning" model="quotation.area">
+            <field name="name">نظافة المسبح</field>
+            <field name="name_en">Swimming Pool</field>
+            <field name="type">external</field>
+        </record>
+        <record id="fence_cleaning" model="quotation.area">
+            <field name="name">السور الخارجي</field>
+            <field name="name_en">Fence</field>
+            <field name="type">external</field>
+        </record>
+        <record id="external_facades_cleaning" model="quotation.area">
+            <field name="name">الواجهات الخارجية</field>
+            <field name="name_en">External facades</field>
+            <field name="type">external</field>
+        </record>
+        <record id="out_side_lighting_cleaning" model="quotation.area">
+            <field name="name">الإضاءة الخارجية</field>
+            <field name="name_en">Outside Lighting</field>
+            <field name="type">external</field>
+        </record>
+
+        <!--Quotation Internal Cleaning Items-->
+        <record id="option_1" model="quotation.cleaning.item">
+            <field name="name">نظافة الأبواب الخشبية</field>
+            <field name="name_en">نظافة الأبواب الخشبية</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_2" model="quotation.cleaning.item">
+            <field name="name">نظافة الخزائن الخشبية</field>
+            <field name="name_en">نظافة الخزائن الخشبية</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_3" model="quotation.cleaning.item">
+            <field name="name">نظافة الجدران من الغبار</field>
+            <field name="name_en">نظافة الجدران من الغبار</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_4" model="quotation.cleaning.item">
+            <field name="name">نظافة الإضاءة</field>
+            <field name="name_en">نظافة الإضاءة</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_5" model="quotation.cleaning.item">
+            <field name="name">نظافة النجفات</field>
+            <field name="name_en">Chandeliers</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_6" model="quotation.cleaning.item">
+            <field name="name">نظافة أرضيات السيراميك</field>
+            <field name="name_en">نظافة أرضيات السيراميك</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_7" model="quotation.cleaning.item">
+            <field name="name">نظافة المطبخ الداخلي</field>
+            <field name="name_en">نظافة المطبخ الداخلي</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_8" model="quotation.cleaning.item">
+            <field name="name">نظافة الشترات</field>
+            <field name="name_en">نظافة الشترات</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_9" model="quotation.cleaning.item">
+            <field name="name">نظافة الزجاج والألمنيوم</field>
+            <field name="name_en">نظافة الزجاج والألمنيوم</field>
+            <field name="type">internal</field>
+        </record>
+<!--        <record id="option_10" model="quotation.cleaning.item">-->
+<!--            <field name="name">نظافة المسبح</field>-->
+<!--            <field name="name_en">Swimming Pool</field>-->
+<!--            <field name="type">internal</field>-->
+<!--        </record>-->
+        <record id="option_11" model="quotation.cleaning.item">
+            <field name="name">نظافة السكاى لايت</field>
+            <field name="name_en">SkyLight</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_12" model="quotation.cleaning.item">
+            <field name="name">نظافة المفروشات من الغبار</field>
+            <field name="name_en">Furniture (vacuum)</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_13" model="quotation.cleaning.item">
+            <field name="name">نظافة فتحات التكيف</field>
+            <field name="name_en">نظافة فتحات التكيف</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_14" model="quotation.cleaning.item">
+            <field name="name">نظافة قماش الجدران</field>
+            <field name="name_en">نظافة قماش الجدران</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_15" model="quotation.cleaning.item">
+            <field name="name">نظافة الأبواب الرئيسية للفيلا</field>
+            <field name="name_en">نظافة الأبواب الرئيسية للفيلا</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_16" model="quotation.cleaning.item">
+            <field name="name">نظافة ستائر</field>
+            <field name="name_en">Curtains (vacuum)</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_17" model="quotation.cleaning.item">
+            <field name="name">نظافة مفاتيح الكهرباء</field>
+            <field name="name_en">نظافة مفاتيح الكهرباء</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_18" model="quotation.cleaning.item">
+            <field name="name">نظافة الأسقف الجبسية</field>
+            <field name="name_en">Drop Ceiling</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_19" model="quotation.cleaning.item">
+            <field name="name">نظافة الدرابزين</field>
+            <field name="name_en">نظافة الدرابزين</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_20" model="quotation.cleaning.item">
+            <field name="name">نظافة دورات المياه</field>
+            <field name="name_en">نظافة دورات المياه</field>
+            <field name="type">internal</field>
+        </record>
+        <record id="option_21" model="quotation.cleaning.item">
+            <field name="name">نظافة أرضيات البركية</field>
+            <field name="name_en">نظافة أرضيات البركية</field>
+            <field name="type">internal</field>
+        </record>
+
+        <!--Quotation External Cleaning Items-->
+        <record id="option_22" model="quotation.cleaning.item">
+            <field name="name">نظافة الإضاءة الصغيرة</field>
+            <field name="name_en">Outside Lighting / Small</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_23" model="quotation.cleaning.item">
+            <field name="name">نظافة الإضاءة الكبيرة</field>
+            <field name="name_en">Outside Lighting / High Column</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_24" model="quotation.cleaning.item">
+            <field name="name">نظافة الواجهات الزجاج والألمنيوم</field>
+            <field name="name_en">Glass</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_25" model="quotation.cleaning.item">
+            <field name="name">نظافة الواجهات الحجر</field>
+            <field name="name_en">Stone</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_26" model="quotation.cleaning.item">
+            <field name="name">نظافة الواجهات الرخام</field>
+            <field name="name_en">Mica or Marble</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_27" model="quotation.cleaning.item">
+            <field name="name">نظافة الواجهات المدهونة</field>
+            <field name="name_en">Painted Facades Cleaning</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_28" model="quotation.cleaning.item">
+            <field name="name">نظافة القرميد</field>
+            <field name="name_en">Brick Roof</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_29" model="quotation.cleaning.item">
+            <field name="name">نظافة الأبواب الرئيسية الخارجية</field>
+            <field name="name_en">Main External Doors Cleaning</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_30" model="quotation.cleaning.item">
+            <field name="name">نظافة المسبح</field>
+            <field name="name_en">Swimming Pool</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_31" model="quotation.cleaning.item">
+            <field name="name">نظافة السور الخارجي من الخارج</field>
+            <field name="name_en">Fence</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_32" model="quotation.cleaning.item">
+            <field name="name">نظافة السور الخارجي من الداخل</field>
+            <field name="name_en">Fence</field>
+            <field name="type">external</field>
+        </record>
+
+        <record id="option_33" model="quotation.cleaning.item">
+            <field name="name">نظافة الأرضيات الخارجية</field>
+            <field name="name_en">Outside Yard Floor</field>
+            <field name="type">external</field>
+        </record>
+
+        <!--Quotation Steam Items-->
+        <record id="option_1" model="quotation.steam.item">
+            <field name="name">نظافة الموكيت بالبخار</field>
+        </record>
+        <record id="option_2" model="quotation.steam.item">
+            <field name="name">نظافة المقاعد بالبخار</field>
+        </record>
+        <record id="option_3" model="quotation.steam.item">
+            <field name="name">حماية قماش</field>
+        </record>
+        <record id="option_4" model="quotation.steam.item">
+            <field name="name">حماية رخام</field>
+        </record>
+
+        <!--Quotation Marble Items-->
+        <record id="option_1" model="quotation.marble.item">
+            <field name="name">معالجة ارضيات الرخام بالألماس</field>
+        </record>
+        <record id="option_2" model="quotation.marble.item">
+            <field name="name">تلميع درج الرخام</field>
+        </record>
+        <record id="option_3" model="quotation.marble.item">
+            <field name="name">معالجة الدرج الرخام بالألماس</field>
+        </record>
+        <record id="option_4" model="quotation.marble.item">
+            <field name="name">تلميع النعلات الرخام</field>
+        </record>
+        <record id="option_5" model="quotation.marble.item">
+            <field name="name">تلميع أرضيات الرخام</field>
+        </record>
+        <record id="option_6" model="quotation.marble.item">
+            <field name="name">معالجة جدران الرخام بالألماس</field>
+        </record>
+
+        <!--Quotation Spare Parts Data-->
+        <record id="option_1" model="quotation.spare.part">
+            <field name="name">Jumper yellow 60 diam 75</field>
+        </record>
+
+        <record id="option_2" model="quotation.spare.part">
+            <field name="name">Jumper yellow 120 diam 75</field>
+        </record>
+
+        <record id="option_3" model="quotation.spare.part">
+            <field name="name">Jumper yellow 220 diam 75</field>
+        </record>
+
+        <record id="option_4" model="quotation.spare.part">
+            <field name="name">Jumper yellow 400 diam 75</field>
+        </record>
+
+        <record id="option_5" model="quotation.spare.part">
+            <field name="name">Jumper yellow 800 diam 75</field>
+        </record>
+
+        <record id="option_6" model="quotation.spare.part">
+            <field name="name">Jumper yellow 1500 diam 75</field>
+        </record>
+
+        <record id="option_7" model="quotation.spare.part">
+            <field name="name">Jumper yellow 1800 diam 75</field>
+        </record>
+
+        <record id="option_8" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 60 diam 75</field>
+        </record>
+
+        <record id="option_9" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 120 diam 75</field>
+        </record>
+
+        <record id="option_10" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 220 diam 75</field>
+        </record>
+
+        <record id="option_11" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 400 diam 75</field>
+        </record>
+
+        <record id="option_12" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 800 diam 75</field>
+        </record>
+
+        <record id="option_13" model="quotation.spare.part">
+            <field name="name">Jumper Green gr 1500 diam 75</field>
+        </record>
+
+        <record id="option_14" model="quotation.spare.part">
+            <field name="name">Jumper Green 3 60 diam 100</field>
+        </record>
+
+        <record id="option_15" model="quotation.spare.part">
+            <field name="name">Jumper Green 4 120 diam 100</field>
+        </record>
+
+        <record id="option_16" model="quotation.spare.part">
+            <field name="name">Jumper Green 5 220 diam 100</field>
+        </record>
+
+        <record id="option_17" model="quotation.spare.part">
+            <field name="name">Jumper Green 6 400 diam 100</field>
+        </record>
+
+        <record id="option_18" model="quotation.spare.part">
+            <field name="name">Jumper Green 7 800 diam 100</field>
+        </record>
+
+        <record id="option_19" model="quotation.spare.part">
+            <field name="name">Jumper Green 8 1500 diam 100</field>
+        </record>
+
+        <record id="option_20" model="quotation.spare.part">
+            <field name="name">Jaguar Flex Green 60 146mm</field>
+        </record>
+
+        <record id="option_21" model="quotation.spare.part">
+            <field name="name">Jaguar Flex Black 120 146mm</field>
+        </record>
+
+        <record id="option_22" model="quotation.spare.part">
+            <field name="name">Jaguar Flex Red 220 146mm</field>
+        </record>
+
+        <record id="option_23" model="quotation.spare.part">
+            <field name="name">Jaguar Flex Yellow 400 146mm</field>
+        </record>
+
+        <record id="option_24" model="quotation.spare.part">
+            <field name="name">motor vacuume</field>
+        </record>
+
+        <!--Quotation Equipments Data-->
+        <record id="option_1" model="quotation.equipment">
+            <field name="name">رافعة كهربائية على ارتفاع 13.8 متر (سيزور ليفت)</field>
+            <field name="name_tr">ELECTRIC SCISSOR LIFTS ( GTWY14-300 ) 13.8m</field>
+        </record>
+
+        <record id="option_2" model="quotation.equipment">
+            <field name="name">ماكينة لضخ الماء المفلتر لتنظيف الزجاج والجدران المرتفعة على ارتفاع 20 ماركة أنقر</field>
+            <field name="name_tr">High Pure water glass cleaning 20 m unger</field>
+        </record>
+
+        <record id="option_3" model="quotation.equipment">
+            <field name="name">ماكينة لضخ الماء المفلتر لتنظيف الزجاج والجدران المرتفعة على ارتفاع 13م ماركة أنقر
+            </field>
+            <field name="name_tr">High Pure water glass cleaning 13 m unger</field>
+        </record>
+
+        <record id="option_4" model="quotation.equipment">
+            <field name="name">ماكينة لتنظيف السلالم الكهربائية</field>
+            <field name="name_tr">Escalator cleaning machine</field>
+        </record>
+
+        <record id="option_5" model="quotation.equipment">
+            <field name="name">سقالة متحركة ذات كفرات و ذراعات أمان ارتفاع 13 متر</field>
+            <field name="name_tr">Scaffolding with wheels and saftey Support arms (13m High)</field>
+        </record>
+
+        <record id="option_6" model="quotation.equipment">
+            <field name="name">ماكينة تنظيف ارضيات ماركة كلينديكس</field>
+            <field name="name_tr">Single disk floor polishing machine - Klindex</field>
+        </record>
+
+        <record id="option_7" model="quotation.equipment">
+            <field name="name">ماكينة تلميع أرضيات عالية السرعة ماركة كلينديكس</field>
+            <field name="name_tr">High speed Buffing machine - Klindex</field>
+        </record>
+
+        <record id="option_8" model="quotation.equipment">
+            <field name="name">مكنسة كهربائية 2400 واط للتنظيف الجاف و السوائل من ماركة كلينديكس كارشر</field>
+            <field name="name_tr">Vacuum machine ( Wet &amp; Dry ) 2400 W - Klindex</field>
+        </record>
+
+        <record id="option_9" model="quotation.equipment">
+            <field name="name">مكينة تنظيف بضغط الماء العالي 170 بار تعمل بالبطارية</field>
+            <field name="name_tr">Pressurized water washer 170 Bar, by battery</field>
+        </record>
+
+        <record id="option_10" model="quotation.equipment">
+            <field name="name">سلم 3 درجات</field>
+            <field name="name_tr">ladder 3 feet</field>
+        </record>
+
+        <record id="option_11" model="quotation.equipment">
+            <field name="name">سلم 6 درجات</field>
+            <field name="name_tr">ladder 6 feet</field>
+        </record>
+
+        <record id="option_12" model="quotation.equipment">
+            <field name="name">سلم 9 درجات</field>
+            <field name="name_tr">ladder 9 feet</field>
+        </record>
+
+        <record id="option_13" model="quotation.equipment">
+            <field name="name">ماكينة كنس أوتوماتيكية بمقعد للمشغل من ماركة كارشر - KM 100 /100 R G</field>
+            <field name="name_tr">T 5 DR 1100 ( Big size Ride-on sweeper ) Karcher</field>
+        </record>
+
+        <record id="option_14" model="quotation.equipment">
+            <field name="name">ماكينة فرك وغسيل وتجفيف الأرضيات تعمل بالبطاريه مع مقعد للمشغل ماركه كارشر - B 150 R BP
+                DOSE
+            </field>
+            <field name="name_tr">Triple 65-2 ( Medium sized Ride-on scrubber dryer) Karcher</field>
+        </record>
+
+        <record id="option_15" model="quotation.equipment">
+            <field name="name">جهاز تعقيم للاسطح من البكتيريا والفيروسات يعمل بتحفيز الضوء</field>
+            <field name="name_tr">Eco Coat ( This includes 2 x coat units, 3 bottles of standard coating, 1 x bottle of
+                glass coating
+            </field>
+        </record>
+
+        <record id="option_16" model="quotation.equipment">
+            <field name="name">ماكينة لتنظيف الحمامات برغوة التنظيف والتعقيم (تعمل بالبطاريه)</field>
+            <field name="name_tr">Powertec 30 for Wash room cleaning &amp; Disinfecting by Foam. Battery operated
+            </field>
+        </record>
+
+        <record id="option_17" model="quotation.equipment">
+            <field name="name">ماكينة معطر ومطهر لمقعد المرحاض</field>
+            <field name="name_tr">Toilet Care solution machine - Disinfect &amp; Deodorize</field>
+        </record>
+
+        <record id="option_18" model="quotation.equipment">
+            <field name="name">ماكينة ضغط رغوة تنظيف اليدين فى دورات المياه</field>
+            <field name="name_tr">Hand Care solution machine - Foam hand cleaner</field>
+        </record>
+
+        <record id="option_19" model="quotation.equipment">
+            <field name="name">مكنسة كهربائية تحمل على الظهر</field>
+            <field name="name_tr">Vacuum machine Black Pack</field>
+        </record>
+
+        <record id="option_20" model="quotation.equipment">
+            <field name="name">مكنسة لتنظيف و شفط الأوساخ من مياه المسبح ( مجموعة تنظيف مسابح )</field>
+            <field name="name_tr">Swimming Pool Vacuum Cleaner</field>
+        </record>
+
+        <record id="option_21" model="quotation.equipment">
+            <field name="name">ماكينة تنظيف السجاد بالبودرة الجافة HOST FREE STYLE</field>
+            <field name="name_tr">Dry Powder Carpet machine (portable) HOST FREE STYLE</field>
+        </record>
+
+        <record id="option_22" model="quotation.equipment">
+            <field name="name">ماكينة تنظيف السجاد بالرغوه الجافة فون شريدر -MACH 12</field>
+            <field name="name_tr">Dry Foam Carpet Cleaning Machine -MACH 12 VonSchradar</field>
+        </record>
+
+        <record id="option_23" model="quotation.equipment">
+            <field name="name">ماكينة لتنظيف الأسقف المستعارة ماركه فون شريدر- WERSATILE</field>
+            <field name="name_tr">Wersatile - VonSchradar False Ceiling Dry Foam Cleaning Machine</field>
+        </record>
+
+        <record id="option_24" model="quotation.equipment">
+            <field name="name">ماكينة تنظيف الكنب بالرغوة الجافة ماركه فون شريدر ESPRIT</field>
+            <field name="name_tr">Esprit -VonSchradar Furniture Cleaning by Dry Foam</field>
+        </record>
+
+        <!--Quotation Tools Data-->
+        <record id="option_1" model="quotation.tool">
+            <field name="name">صندوق قمامة بعجلتين 240 ليتر</field>
+            <field name="name_tr">2 wheeled 240 L trash bin</field>
+        </record>
+
+        <record id="option_2" model="quotation.tool">
+            <field name="name">صندوق قمامة ذو عجلات 1100 لتر</field>
+            <field name="name_tr">garbage container with wheels 1100 lit</field>
+        </record>
+
+        <record id="option_3" model="quotation.tool">
+            <field name="name">عصارة مساحة بسطلين و 4 عجلات</field>
+            <field name="name_tr">Dual Bucket with wringer with 4 wheels</field>
+        </record>
+
+        <record id="option_4" model="quotation.tool">
+            <field name="name">عربة مواد وأدوات لخدمة النظافة الداخلية</field>
+            <field name="name_tr">janitorial Trolley Housekeeping</field>
+        </record>
+
+        <record id="option_5" model="quotation.tool">
+            <field name="name">عصا الومنيوم لمساحة تنظيف الزجاج قابلة للتمدد حتى 9 متر ماركة آنجر</field>
+            <field name="name_tr">Telescopic Aluminum Pole system 9 mtr Unger</field>
+        </record>
+
+        <record id="option_6" model="quotation.tool">
+            <field name="name">عصا الومنيوم لمساحة تنظيف الزجاج قابلة للتمدد حتى 3 متر ماركة آنجر</field>
+            <field name="name_tr">Telescopic Aluminum Pole system 3 mtr Unger</field>
+        </record>
+
+        <record id="option_7" model="quotation.tool">
+            <field name="name">مساحة زجاج ثنائية (قشاطة مطاط و أسفنجة لوضع المنظف في آن واحد) 45 سم - آنجر</field>
+            <field name="name_tr">Vise Versa glass cleaning squeegee and cleaner 45 cm-Unger</field>
+        </record>
+
+        <record id="option_8" model="quotation.tool">
+            <field name="name">مساحة مطاط لتنظيف الزجاج 35 سم</field>
+            <field name="name_tr">Vise Versa Squeegee and cleaner 35 cm</field>
+        </record>
+
+        <record id="option_9" model="quotation.tool">
+            <field name="name">لوحة للتحذير اثناء العمل</field>
+            <field name="name_tr">caution sign board</field>
+        </record>
+
+        <record id="option_10" model="quotation.tool">
+            <field name="name">محول فولتية كهربائي</field>
+            <field name="name_tr">Transformer elc.</field>
+        </record>
+
+        <record id="option_11" model="quotation.tool">
+            <field name="name">فوطة قطن ميكروفايبر لون أحمر , أزرق , أخضر مقاس 40 سم * 40 سم</field>
+            <field name="name_tr">Cotton cloth ( micro fiber cloth colour red , blue , green . 40 * 40 cm</field>
+        </record>
+
+        <record id="option_12" model="quotation.tool">
+            <field name="name">عصا مساحة مع القاعدة مقصية للارضيات مقاس 80 سم لإزالة الغبار</field>
+            <field name="name_tr">Dust Mop 80cm handle &amp; base sisor type</field>
+        </record>
+
+        <record id="option_13" model="quotation.tool">
+            <field name="name">مساحات قطن للارضيات</field>
+            <field name="name_tr">Dust Mop cotton</field>
+        </record>
+
+        <record id="option_14" model="quotation.tool">
+            <field name="name">مكنسة و جاروف يدوية</field>
+            <field name="name_tr">Dust pan with brush</field>
+        </record>
+
+        <record id="option_15" model="quotation.tool">
+            <field name="name">قشاطة أرضيات 72 سم بلجيكية</field>
+            <field name="name_tr">floor wiper (72 cm) made in belgium</field>
+        </record>
+
+        <record id="option_16" model="quotation.tool">
+            <field name="name">قشاطة أرضيات 45 سم</field>
+            <field name="name_tr">floor wiper (45 cm)</field>
+        </record>
+
+        <record id="option_17" model="quotation.tool">
+            <field name="name">فرش تنظيف مقاعد دورات المياه</field>
+            <field name="name_tr">Toilet Brush</field>
+        </record>
+
+        <record id="option_18" model="quotation.tool">
+            <field name="name">شريط تحذير عدم المرور</field>
+            <field name="name_tr">Warning Tape</field>
+        </record>
+
+        <record id="option_19" model="quotation.tool">
+            <field name="name">قمع تحذير عدم المرور</field>
+            <field name="name_tr">Waring cones</field>
+        </record>
+
+        <record id="option_20" model="quotation.tool">
+            <field name="name">حزام الامان لكامل الجسم للعامل اثناء عمله في اماكن مرتفعة</field>
+            <field name="name_tr">safety belt full body harness</field>
+        </record>
+
+        <record id="option_21" model="quotation.tool">
+            <field name="name">نظارات وقاية للعينين للعامل اثناء عمله (شفاف و أسود)</field>
+            <field name="name_tr">safety goggles black &amp; clear</field>
+        </record>
+
+        <record id="option_22" model="quotation.tool">
+            <field name="name">خوذة حماية للرأس</field>
+            <field name="name_tr">helmets</field>
+        </record>
+
+        <record id="option_23" model="quotation.tool">
+            <field name="name">كمامة للوجه</field>
+            <field name="name_tr">Face Mask</field>
+        </record>
+
+        <record id="option_24" model="quotation.tool">
+            <field name="name">قفازات مطاط أسود ثقيل</field>
+            <field name="name_tr">Hand gloves Rubber</field>
+        </record>
+
+        <record id="option_25" model="quotation.tool">
+            <field name="name">قفازات طبية ذات استخدام واحد (صندوق 100 حبة)</field>
+            <field name="name_tr">Surgical gloves (Box - 100PCS)</field>
+        </record>
+
+        <record id="option_26" model="quotation.tool">
+            <field name="name">قفازات قطن</field>
+            <field name="name_tr">Hand gloves cotton</field>
+        </record>
+
+        <record id="option_27" model="quotation.tool">
+            <field name="name">سكين لازالة الاوساخ الملتصقة على الاسطح</field>
+            <field name="name_tr">steel scrapper blade</field>
+        </record>
+
+        <record id="option_28" model="quotation.tool">
+            <field name="name">مقشة لكنس الأرضيات</field>
+            <field name="name_tr">stick brush for floor</field>
+        </record>
+
+        <record id="option_29" model="quotation.tool">
+            <field name="name">سلة نفايات صغيرة</field>
+            <field name="name_tr">Small Trsh Basket</field>
+        </record>
+
+        <record id="option_30" model="quotation.tool">
+            <field name="name">حامل المساحة + عصا + القماشة (سمارت كلار) ماركة آنجر</field>
+            <field name="name_tr">Smart Color Flat Mop Holder + pole 130 cm + Mop Micro Fiber 40 cm( Optional) (Red or
+                Gray) - UNGER
+            </field>
+        </record>
+
+        <record id="option_31" model="quotation.tool">
+            <field name="name">Electric plastic Tape Small</field>
+            <field name="name_tr">Electric plastic Tape Small</field>
+        </record>
+
+        <record id="option_32" model="quotation.tool">
+            <field name="name">Masking Tape</field>
+            <field name="name_tr">Masking Tape</field>
+        </record>
+
+        <record id="option_33" model="quotation.tool">
+            <field name="name">plastic Tape</field>
+            <field name="name_tr">plastic Tape</field>
+        </record>
+
+        <record id="option_34" model="quotation.tool">
+            <field name="name">dust pen with brush</field>
+            <field name="name_tr">dust pen with brush</field>
+        </record>
+
+        <record id="option_35" model="quotation.tool">
+            <field name="name">pascket trash bag</field>
+            <field name="name_tr">pascket trash bag</field>
+        </record>
+        <record id="option_36" model="quotation.tool">
+            <field name="name">Glass wipers</field>
+            <field name="name_tr">مساحات زجاج</field>
+            <field name="auto_add">True</field>
+        </record>
+        <record id="option_37" model="quotation.tool">
+            <field name="name">Towels, cloth and cleaning brushes</field>
+            <field name="name_tr">فوط و قماش و فرش تنظيف</field>
+            <field name="auto_add">True</field>
+        </record>
+        <record id="option_38" model="quotation.tool">
+            <field name="name">Ladders &amp; Scaffolding</field>
+            <field name="name_tr">سلالم و سقالات</field>
+            <field name="auto_add">True</field>
+        </record>
+        <record id="option_39" model="quotation.tool">
+            <field name="name">Indoor floor brooms</field>
+            <field name="name_tr">مكانس أرضيات داخلية</field>
+            <field name="auto_add">True</field>
+        </record>
+        <record id="option_40" model="quotation.tool">
+            <field name="name">Vacuum cleaners and ordinary</field>
+            <field name="name_tr">مكانس كهربائية و عادية</field>
+            <field name="auto_add">True</field>
+        </record>
+        <record id="option_41" model="quotation.tool">
+            <field name="name">Water pumping machines</field>
+            <field name="name_tr">مكائن ضخ مياه</field>
+            <field name="auto_add">True</field>
+        </record>
+
+        <!--Quotation Cleaning Material -->
+        <record id="option_1" model="quotation.cleaning.material">
+            <field name="name">مرقق القوام</field>
+            <field name="name_tr">Thinner</field>
+        </record>
+
+        <record id="option_2" model="quotation.cleaning.material">
+            <field name="name">Kerosine Big</field>
+            <field name="name_tr">Kerosine Big</field>
+        </record>
+
+        <record id="option_3" model="quotation.cleaning.material">
+            <field name="name">قفازات اليد المطاط الأسود</field>
+            <field name="name_tr">Black Rubber hand Glaves</field>
+        </record>
+
+        <record id="option_4" model="quotation.cleaning.material">
+            <field name="name">الفولاذ المقاوم للصدأ</field>
+            <field name="name_tr">Stainless Steel polish MOBIE</field>
+        </record>
+
+        <record id="option_5" model="quotation.cleaning.material">
+            <field name="name">WD 40</field>
+            <field name="name_tr">WD 40</field>
+        </record>
+
+        <record id="option_6" model="quotation.cleaning.material">
+            <field name="name">لفة سلك القماش القطن</field>
+            <field name="name_tr">Cotton Cloth Wite Roll</field>
+        </record>
+
+        <record id="option_7" model="quotation.cleaning.material">
+            <field name="name">قطعة قماش للتنظيف 9999</field>
+            <field name="name_tr">Cleaning Cloth 9999</field>
+        </record>
+
+        <record id="option_8" model="quotation.cleaning.material">
+            <field name="name">Belage - ملمع معطر</field>
+            <field name="name_tr">Belage - freshner Polish</field>
+        </record>
+
+        <record id="option_9" model="quotation.cleaning.material">
+            <field name="name">Dixi - منظف الزجاج</field>
+            <field name="name_tr">Dixi / Glass Cleaner</field>
+            <field name="auto_add">True</field>
+        </record>
+
+        <record id="option_10" model="quotation.cleaning.material">
+            <field name="name">شفرة</field>
+            <field name="name_tr">Blade</field>
+        </record>
+
+        <record id="option_11" model="quotation.cleaning.material">
+            <field name="name">لوحة سوداء مقاس 17 بوصة</field>
+            <field name="name_tr">17" Black Pad</field>
+        </record>
+
+        <record id="option_12" model="quotation.cleaning.material">
+            <field name="name">لوحة حمراء مقاس 17 بوصة</field>
+            <field name="name_tr">"17 Red Pad</field>
+        </record>
+
+        <record id="option_13" model="quotation.cleaning.material">
+            <field name="name">لوحة بيضاء مقاس 17 بوصة</field>
+            <field name="name_tr">17 White Pad</field>
+        </record>
+
+        <record id="option_14" model="quotation.cleaning.material">
+            <field name="name">ممسحة ارضية الصغيرة ملونة</field>
+            <field name="name_tr">Floor Whiper Small Color</field>
+        </record>
+
+        <record id="option_15" model="quotation.cleaning.material">
+            <field name="name">فرشاة مكنسة / أرضية</field>
+            <field name="name_tr">Broom / Floor Brush</field>
+        </record>
+
+        <record id="option_16" model="quotation.cleaning.material">
+            <field name="name">ممسحة ارضية قطنية بيضاء</field>
+            <field name="name_tr">Floor Mop Cottnon Wite</field>
+        </record>
+
+        <record id="option_17" model="quotation.cleaning.material">
+            <field name="name">معطر هواء</field>
+            <field name="name_tr">Cottage Air Freshener</field>
+        </record>
+
+        <record id="option_18" model="quotation.cleaning.material">
+            <field name="name">مكشطة / شفرة اليد</field>
+            <field name="name_tr">Scrapper / Blade Hand</field>
+        </record>
+
+        <record id="option_19" model="quotation.cleaning.material">
+            <field name="name">لفة بلاستيك مزدوجة</field>
+            <field name="name_tr">Plastic Roll Double</field>
+        </record>
+
+        <record id="option_20" model="quotation.cleaning.material">
+            <field name="name">لفة بلاستيكية واحدة</field>
+            <field name="name_tr">Plastic Roll Single</field>
+        </record>
+
+        <record id="option_21" model="quotation.cleaning.material">
+            <field name="name">ممسحة ارضيه سوداء كبيرة</field>
+            <field name="name_tr">Floor Whiper Big Black</field>
+        </record>
+
+        <record id="option_22" model="quotation.cleaning.material">
+            <field name="name">مزيل رسومات</field>
+            <field name="name_tr">Paint Remover</field>
+        </record>
+
+        <record id="option_23" model="quotation.cleaning.material">
+            <field name="name">أكياس قمامة سوداء كبيرة</field>
+            <field name="name_tr">Garbage Bags Black Big</field>
+        </record>
+
+        <record id="option_24" model="quotation.cleaning.material">
+            <field name="name">أكياس قمامة بيضاء صغيرة</field>
+            <field name="name_tr">Garbage Bags Wight Smale</field>
+        </record>
+
+        <record id="option_25" model="quotation.cleaning.material">
+            <field name="name">شريط تحذير</field>
+            <field name="name_tr">warning tape</field>
+        </record>
+
+        <record id="option_26" model="quotation.cleaning.material">
+            <field name="name">فرشاة معدنية صغيرة</field>
+            <field name="name_tr">metal prush small</field>
+        </record>
+
+        <record id="option_27" model="quotation.cleaning.material">
+            <field name="name">حامل الفرشاة</field>
+            <field name="name_tr">prush holder</field>
+        </record>
+
+        <record id="option_28" model="quotation.cleaning.material">
+            <field name="name">فرشاة دورة المياة</field>
+            <field name="name_tr">Toilet  Brush</field>
+        </record>
+
+        <record id="option_29" model="quotation.cleaning.material">
+            <field name="name">كلوركس / قونكس</field>
+            <field name="name_tr">Clorox / Qunex</field>
+        </record>
+
+        <record id="option_30" model="quotation.cleaning.material">
+            <field name="name">مانع النار (جاهزة للاستخدام)</field>
+            <field name="name_tr">Fire Retardant ( ready to use )</field>
+        </record>
+
+        <record id="option_31" model="quotation.cleaning.material">
+            <field name="name">Tissue Maxi Roll</field>
+            <field name="name_tr">Tissue Maxi Roll </field>
+        </record>
+
+        <record id="option_32" model="quotation.cleaning.material">
+            <field name="name">نسيج ماكسي رول</field>
+            <field name="name_tr">Tissue Box 200-Office </field>
+        </record>
+
+        <record id="option_33" model="quotation.cleaning.material">
+            <field name="name">Tissue Box 100-Office</field>
+            <field name="name_tr">Tissue Box 100-Office</field>
+        </record>
+
+        <record id="option_34" model="quotation.cleaning.material">
+            <field name="name">علبة مناديل مكتب 100</field>
+            <field name="name_tr">Toilet Tissue Roll Small</field>
+        </record>
+
+        <record id="option_35" model="quotation.cleaning.material">
+            <field name="name">رول مناديل تواليت كبيرة</field>
+            <field name="name_tr">Toilet Tissue Roll Large</field>
+        </record>
+
+        <record id="option_36" model="quotation.cleaning.material">
+            <field name="name">شمع اكسترا لوكس - Bellinzoni</field>
+            <field name="name_tr">Wax Extra Lux Bellinzoni</field>
+        </record>
+
+        <record id="option_37" model="quotation.cleaning.material">
+            <field name="name">صابون يد</field>
+            <field name="name_tr">Hand Soap</field>
+        </record>
+
+        <record id="option_38" model="quotation.cleaning.material">
+            <field name="name">قناع وجه</field>
+            <field name="name_tr">Face Mask</field>
+        </record>
+
+        <record id="option_39" model="quotation.cleaning.material">
+            <field name="name">شمع سريع - Sidco</field>
+            <field name="name_tr">Quick Wax - Sidco</field>
+        </record>
+
+        <record id="option_40" model="quotation.cleaning.material">
+            <field name="name">شمع ريم - Sidco</field>
+            <field name="name_tr">Rem Wax - Sidco</field>
+        </record>
+
+        <record id="option_41" model="quotation.cleaning.material">
+            <field name="name">Safe / Dettol</field>
+            <field name="name_tr">Safe / Dettol</field>
+        </record>
+
+        <record id="option_42" model="quotation.cleaning.material">
+            <field name="name">جيل فائق النظافة</field>
+            <field name="name_tr">Super Clean Gal.</field>
+        </record>
+
+        <record id="option_43" model="quotation.cleaning.material">
+            <field name="name">شامبو جيل</field>
+            <field name="name_tr">Shampoo Gal.</field>
+            <field name="auto_add">True</field>
+        </record>
+
+        <record id="option_44" model="quotation.cleaning.material">
+            <field name="name">قفازات اليد البلاستيكية البيضاء</field>
+            <field name="name_tr">White Plastic hand Glaves</field>
+        </record>
+
+        <record id="option_45" model="quotation.cleaning.material">
+            <field name="name">لفة قماش قطن الأحمر</field>
+            <field name="name_tr">Cotton Cloth Red Roll</field>
+        </record>
+
+        <record id="option_46" model="quotation.cleaning.material">
+            <field name="name">قفازات اليد القطنية السوداء</field>
+            <field name="name_tr">Black Cotton hand Glaves</field>
+        </record>
+
+        <record id="option_47" model="quotation.cleaning.material">
+            <field name="name">ممسحة ارضية القطن البلاستيك</field>
+            <field name="name_tr">Floor Whiper Cottn Plastic</field>
+        </record>
+
+        <record id="option_48" model="quotation.cleaning.material">
+            <field name="name">تغطية الأحذية</field>
+            <field name="name_tr">cover shose </field>
+        </record>
+
+        <record id="option_49" model="quotation.cleaning.material">
+            <field name="name">إدخال الأنسجة أضعاف</field>
+            <field name="name_tr">enter fold tissuss</field>
+        </record>
+
+        <record id="option_50" model="quotation.cleaning.material">
+            <field name="name">منظف أسطح متعدد الاستخدام</field>
+            <field name="name_tr">Multi-use surface cleaner</field>
+            <field name="auto_add">True</field>
+        </record>
+
+        <record id="option_51" model="quotation.cleaning.material">
+            <field name="name">منظف و معطر حمامات</field>
+            <field name="name_tr">Bathroom Cleaner &amp; Freshener</field>
+            <field name="auto_add">True</field>
+        </record>
+
+        <!--Quotation Steam Material-->
+        <record id="option_1" model="quotation.steam.material">
+            <field name="name">comfort</field>
+        </record>
+
+        <record id="option_2" model="quotation.steam.material">
+            <field name="name">super delux</field>
+        </record>
+
+        <record id="option_3" model="quotation.steam.material">
+            <field name="name">Fabric Rinse NEW</field>
+        </record>
+
+        <record id="option_4" model="quotation.steam.material">
+            <field name="name">Genispot Gallon</field>
+        </record>
+
+        <record id="option_5" model="quotation.steam.material">
+            <field name="name">White Cotton Clean NEW</field>
+        </record>
+
+        <record id="option_6" model="quotation.steam.material">
+            <field name="name">trafic cleaner</field>
+        </record>
+
+        <record id="option_7" model="quotation.steam.material">
+            <field name="name">powder beformer</field>
+        </record>
+
+        <record id="option_8" model="quotation.steam.material">
+            <field name="name">Solben ( ready to use )</field>
+        </record>
+
+        <!--Quotation Marble Material-->
+        <record id="option_1" model="quotation.marble.material">
+            <field name="name">KP 92 Polishing Powder</field>
+        </record>
+
+        <record id="option_2" model="quotation.marble.material">
+            <field name="name">Polish Color kg5</field>
+        </record>
+
+        <record id="option_3" model="quotation.marble.material">
+            <field name="name">Powder Grouting- Cream</field>
+        </record>
+
+        <record id="option_4" model="quotation.marble.material">
+            <field name="name">Powder Grouting- White</field>
+        </record>
+
+        <record id="option_5" model="quotation.marble.material">
+            <field name="name">Powder Grouting-Brown</field>
+        </record>
+
+        <record id="option_6" model="quotation.marble.material">
+            <field name="name">Jollie Ceram</field>
+        </record>
+
+        <record id="option_7" model="quotation.marble.material">
+            <field name="name">Jollie Wight</field>
+        </record>
+
+        <record id="option_8" model="quotation.marble.material">
+            <field name="name">Sand Paper 120</field>
+        </record>
+
+        <record id="option_9" model="quotation.marble.material">
+            <field name="name">Sand Paper 220</field>
+        </record>
+
+        <record id="option_10" model="quotation.marble.material">
+            <field name="name">Sand Paper 400</field>
+        </record>
+
+        <record id="option_11" model="quotation.marble.material">
+            <field name="name">Sand Paper 600</field>
+        </record>
+
+        <record id="option_12" model="quotation.marble.material">
+            <field name="name">Sand Paper 800</field>
+        </record>
+
+        <record id="option_13" model="quotation.marble.material">
+            <field name="name">Sand Paper 1000</field>
+        </record>
+
+        <record id="option_14" model="quotation.marble.material">
+            <field name="name">Stain Proof Original</field>
+        </record>
+
+        <record id="option_15" model="quotation.marble.material">
+            <field name="name">Vetro Glass Crystallizer</field>
+        </record>
+
+        <record id="option_16" model="quotation.marble.material">
+            <field name="name">Sand Paper 2000</field>
+        </record>
+
+        <record id="option_17" model="quotation.marble.material">
+            <field name="name">Quick Wax - Sidco</field>
+        </record>
+
+        <record id="option_18" model="quotation.marble.material">
+            <field name="name">Rem Wax - Sidco</field>
+        </record>
+
+        <record id="option_19" model="quotation.marble.material">
+            <field name="name">Vetro Glass Idea HP</field>
+        </record>
+
+        <record id="option_20" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 0 small</field>
+        </record>
+
+        <record id="option_21" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 1 small</field>
+        </record>
+
+        <record id="option_22" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 2 small</field>
+        </record>
+
+        <record id="option_23" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 0 mdiem</field>
+        </record>
+
+        <record id="option_24" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 0 mdiem</field>
+        </record>
+
+        <record id="option_25" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 1 mdiem</field>
+        </record>
+
+        <record id="option_26" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 2 mdiem</field>
+        </record>
+
+        <record id="option_27" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 1 big</field>
+        </record>
+
+        <record id="option_28" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 2 big</field>
+        </record>
+
+        <record id="option_29" model="quotation.marble.material">
+            <field name="name">Metal Disc MS 3 big</field>
+        </record>
+
+        <record id="option_30" model="quotation.marble.material">
+            <field name="name">Metal Disc GS 1 small</field>
+        </record>
+
+        <record id="option_31" model="quotation.marble.material">
+            <field name="name">Metal Disc GS 2 small</field>
+        </record>
+
+        <record id="option_32" model="quotation.marble.material">
+            <field name="name">Metal Disc GS 3 small</field>
+        </record>
+
+        <record id="option_33" model="quotation.marble.material">
+            <field name="name">Metal Disc GS 1 big</field>
+        </record>
+
+        <record id="option_34" model="quotation.marble.material">
+            <field name="name">Metal Disc GS 2 big</field>
+        </record>
+
+        <record id="option_35" model="quotation.marble.material">
+            <field name="name">Metal Disc GS3 big</field>
+        </record>
+
+        <record id="option_36" model="quotation.marble.material">
+            <field name="name">Diamond Disc GK 5</field>
+        </record>
+
+        <record id="option_37" model="quotation.marble.material">
+            <field name="name">Diamond Disc GK 6</field>
+        </record>
+
+        <record id="option_38" model="quotation.marble.material">
+            <field name="name">Diamond Disc GK 7</field>
+        </record>
+
+        <record id="option_39" model="quotation.marble.material">
+            <field name="name">Diamond Disc GK 8</field>
+        </record>
+
+        <record id="option_40" model="quotation.marble.material">
+            <field name="name">Diamond Disc MCK 3 / MK 3</field>
+        </record>
+
+        <record id="option_41" model="quotation.marble.material">
+            <field name="name">Diamond Disc MK 4</field>
+        </record>
+
+        <record id="option_42" model="quotation.marble.material">
+            <field name="name">Diamond Disc MK 5</field>
+        </record>
+
+        <record id="option_43" model="quotation.marble.material">
+            <field name="name">Diamond Disc MK 6</field>
+        </record>
+
+        <record id="option_44" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 3 Orance</field>
+        </record>
+
+        <record id="option_45" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 4 Orance</field>
+        </record>
+
+        <record id="option_46" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 5 Orance</field>
+        </record>
+
+        <record id="option_47" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 6 Orance</field>
+        </record>
+
+        <record id="option_48" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 7 Orance</field>
+        </record>
+
+        <record id="option_49" model="quotation.marble.material">
+            <field name="name">Diamond Disc CK 8 Orance</field>
+        </record>
+
+        <record id="option_50" model="quotation.marble.material">
+            <field name="name">Metal Disc CS 0 big 12S</field>
+        </record>
+
+        <record id="option_51" model="quotation.marble.material">
+            <field name="name">Metal Disc CS 1 big 12S</field>
+        </record>
+
+        <record id="option_52" model="quotation.marble.material">
+            <field name="name">Metal Disc CS 2 big 12S</field>
+        </record>
+
+        <record id="option_53" model="quotation.marble.material">
+            <field name="name">Brush antike floor 36 vt 100mm</field>
+        </record>
+
+        <record id="option_54" model="quotation.marble.material">
+            <field name="name">Brush antike floor 46 vt 100mm</field>
+        </record>
+
+        <record id="option_55" model="quotation.marble.material">
+            <field name="name">Brush antike floor 70 vt 100mm</field>
+        </record>
+
+        <record id="option_56" model="quotation.marble.material">
+            <field name="name">Brush antike floor 120 vt 100mm</field>
+        </record>
+
+        <record id="option_57" model="quotation.marble.material">
+            <field name="name">Brush antike floor 220 vt 100mm</field>
+        </record>
+
+        <record id="option_58" model="quotation.marble.material">
+            <field name="name">Brush antike floor 320 vt 100mm</field>
+        </record>
+
+        <!--Quotation Housekeeping Materials-->
+        <record id="option_1" model="quotation.housekeeping.material">
+            <field name="name">صابون ومطهر رغوى ماركة هاند كير</field>
+            <field name="name_tr">hand care solution foam soap &amp; sanitizer</field>
+        </record>
+
+        <record id="option_2" model="quotation.housekeeping.material">
+            <field name="name">منظف و معطر ارضيات</field>
+            <field name="name_tr">Floor Cleaner And Deodorizer</field>
+        </record>
+
+        <record id="option_3" model="quotation.housekeeping.material">
+            <field name="name">فوطة قطن ميكروفايبر لون أحمر , أزرق , أخضر مقاس 40 سم * 40 سم</field>
+            <field name="name_tr">Cotton cloth ( micro fiber cloth colour red , blue , green . 40 * 40 cm</field>
+        </record>
+
+        <record id="option_4" model="quotation.housekeeping.material">
+            <field name="name">أكياس القمامة الصغيرة سعة 10 جالون (صندوق: 16*30)</field>
+            <field name="name_tr">trash bag ( 10 gal ) box 16*30</field>
+        </record>
+
+        <record id="option_5" model="quotation.housekeeping.material">
+            <field name="name">أكياس القمامة الكبيرة سعة 50 جالون (صندوق: 10*15)</field>
+            <field name="name_tr">trash bag ( 50 gal ) box 10*15</field>
+        </record>
+
+        <record id="option_6" model="quotation.housekeeping.material">
+            <field name="name">فرش تنظيف مقاعد دورات المياه</field>
+            <field name="name_tr">Toilet Brush</field>
+        </record>
+
+        <record id="option_7" model="quotation.housekeeping.material">
+            <field name="name">مناديل للوجه فاين سوليوشن كلاسيك للمكاتب صناديق (6*6)36 حبة</field>
+            <field name="name_tr">Fine solution classic fical tissue 6*6 box 36 piece</field>
+        </record>
+
+        <record id="option_8" model="quotation.housekeeping.material">
+            <field name="name">مناديل لليدين للحمامات قطع أتوماتيك فاين سوليوشن</field>
+            <field name="name_tr">Fine solution hand towel autocut</field>
+        </record>
+
+        <record id="option_9" model="quotation.housekeeping.material">
+            <field name="name">لفات مناديل صغيرة داخل كابينة دورات المياة فاين سوليوشن</field>
+            <field name="name_tr">Fine solution toilet tissue</field>
+        </record>
+
+        <record id="option_10" model="quotation.housekeeping.material">
+            <field name="name">معطر هواء - هايجين فريش)</field>
+            <field name="name_tr">air freshener (hygine fresh)</field>
+        </record>
+
+        <record id="option_11" model="quotation.housekeeping.material">
+            <field name="name">مقشة لكنس الأرضيات</field>
+            <field name="name_tr">stick brush for floor</field>
+        </record>
+
+        <record id="option_12" model="quotation.housekeeping.material">
+            <field name="name">سلة نفايات صغيرة</field>
+            <field name="name_tr">Small Trsh Basket</field>
+        </record>
+
+        <record id="option_13" model="quotation.housekeeping.material">
+            <field name="name">رغوة تنظيف و تعقيم لدورات المياه لماكينة سانتوإيما</field>
+            <field name="name_tr">Sani-Foam Washroom Cleaner &amp; Disinfectant for Santoemma Machine</field>
+        </record>
+
+        <record id="option_14" model="quotation.housekeeping.material">
+            <field name="name">منظف حامضي لتنظيف دورات المياه لماكينة سانتوإيما</field>
+            <field name="name_tr">Acid-Foam Washroom Cleaner for Santoemma Machine</field>
+        </record>
+
+    </data>
+</odoo>

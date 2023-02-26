@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--Employee buses-->
+        <record id="view_employee_bus_form" model="ir.ui.view">
+            <field name="name">employee.bus.view.form</field>
+            <field name="model">employee.bus</field>
+            <field name="arch" type="xml">
+                <form string="Bus">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="number"/>
+                            </group>
+                            <group>
+                                <field name="line"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="employee_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_employee_bus_tree" model="ir.ui.view">
+            <field name="name">employee.bus.view.tree</field>
+            <field name="model">employee.bus</field>
+            <field name="arch" type="xml">
+                <tree string="employee Buses">
+                    <field name="number"/>
+                    <field name="line"/>
+                    <field name="employee_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_employee_bus" model="ir.actions.act_window">
+            <field name="name">Employee Buses</field>
+            <field name="res_model">employee.bus</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Define a new employees bus.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_employee_buses_main" name="Employee Buses" parent="hr.menu_hr_root"/>
+        <menuitem id="menu_employee_buses" name="Buses" parent="menu_employee_buses_main" action="action_employee_bus"/>
+
+
+        <!--Employee buses delay-->
+        <record id="view_employee_bus_delay_form" model="ir.ui.view">
+            <field name="name">employee.bus.delay.view.form</field>
+            <field name="model">employee.bus.delay</field>
+            <field name="arch" type="xml">
+                <form string="Bus Delay">
+                    <header>
+                        <button name="action_update_attendance" type="object" string="Update bus delay in attendance" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="bus_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="employee_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_employee_bus_delay_tree" model="ir.ui.view">
+            <field name="name">employee.bus.delay.view.tree</field>
+            <field name="model">employee.bus.delay</field>
+            <field name="arch" type="xml">
+                <tree string="Buses delay">
+                    <field name="date"/>
+                    <field name="bus_id"/>
+                    <field name="employee_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_employee_bus_delay" model="ir.actions.act_window">
+            <field name="name">Buses Delay</field>
+            <field name="res_model">employee.bus.delay</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Define a new bus delay.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_employee_buses_delay" name="Buses Delay" parent="menu_employee_buses_main" action="action_employee_bus_delay"/>
+
+    </data>
+</odoo>

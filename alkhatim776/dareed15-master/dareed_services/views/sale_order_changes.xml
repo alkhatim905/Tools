@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    selected_quotation_areas_external
+    selected_quotation_cleaning_items_external
+
+    <record id="adding_service_to_quotation_view" model="ir.ui.view">
+        <field name="name">Adding Service To The Quotation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="house_service_id" readonly="1"
+                       attrs="{'invisible': [('house_service_id','=', False)]}"/>
+                <field name="is_cleaning_service"/>
+                <field name="is_steam_service"/>
+                <field name="is_marble_service"/>
+                <field name="contracts"/>
+                <field name="total_cleaning_price" invisible="1"/>
+                <field name="total_cleaning_quantity" invisible="1"/>
+                <field name="total_cleaning_subtotal" invisible="1"/>
+
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="user_id"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Type">
+                    <h3/>
+                    <group string="Deal Type">
+                        <field name="service_type"/>
+                    </group>
+                    <group string="Other deal Info.">
+                        <group>
+                            <field name="number_of_workers"/>
+                            <field name="time_from"/>
+                            <field name="time_to"/>
+                        </group>
+                        <group>
+                            <field name="start_date" attrs="{'invisible': [('service_type','=', 'contract')]}"/>
+                            <field name="end_date" attrs="{'invisible': [('service_type','=', 'contract')]}"/>
+                            <field name="start_day" attrs="{'invisible': [('service_type','=', 'one_time')]}"/>
+                            <field name="end_day" attrs="{'invisible': [('service_type','=', 'one_time')]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Proposal Details">
+                    <group>
+                        <field name="total_duration_days"/>
+                        <field name="total_duration_hours"/>
+                        <field name="customer_contact_person"/>
+                    </group>
+                    <group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected Internal Areas</h3>
+                            <field name="selected_quotation_areas" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected External Areas</h3>
+                            <field name="selected_quotation_areas_external" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected Internal Cleaning Items</h3>
+                            <field name="selected_quotation_cleaning_items" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected External Cleaning Items</h3>
+                            <field name="selected_quotation_cleaning_items_external" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                            <h3 style="padding-top: 5px;">Indoor Cleaning (ALL)</h3>
+                            <field name="indoor_cleanings_all" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Outside Yard Floor</h3>
+                            <field name="indoor_outside_yard_floor" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected Steam Items</h3>
+                            <field name="selected_quotation_steam_items" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Selected Marble Items</h3>
+                            <field name="selected_quotation_marble_items" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </page>
+                <page string="Materials, Equipments, Spare parts &amp; Tools">
+                    <group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Housekeeping Materials</h3>
+                            <field name="selected_quotation_housekeeping_material" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Cleaning Materials</h3>
+                            <field name="selected_quotation_cleaning_material" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Steam Materials</h3>
+                            <field name="selected_quotation_steam_material" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Marble Materials</h3>
+                            <field name="selected_quotation_marble_material" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Equipments</h3>
+                            <field name="selected_quotation_equipments" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Tools</h3>
+                            <field name="selected_quotation_tools" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <h3 style="padding-top: 5px;">Spare Parts</h3>
+                            <field name="selected_quotation_spare_parts" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_level_of_dirtiness_tree" model="ir.ui.view">
+        <field name="name">Level Of Dirtiness</field>
+        <field name="model">cleaning.level.of.dirtiness</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_level_of_dirtiness" model="ir.actions.act_window">
+        <field name="name">Level Of Dirtiness</field>
+        <field name="res_model">cleaning.level.of.dirtiness</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_level_of_dirtiness_tree"/>
+    </record>
+
+    <record id="view_internal_areas_tree" model="ir.ui.view">
+        <field name="name">Internal Areas</field>
+        <field name="model">quotation.area</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_internal_areas" model="ir.actions.act_window">
+        <field name="name">Internal Areas</field>
+        <field name="res_model">quotation.area</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type': 'internal'}</field>
+        <field name="domain">[('type','=', 'internal')]</field>
+        <field name="view_id" ref="view_internal_areas_tree"/>
+    </record>
+
+    <record id="view_internal_areas_tree" model="ir.ui.view">
+        <field name="name">Internal Areas</field>
+        <field name="model">quotation.area</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_external_areas" model="ir.actions.act_window">
+        <field name="name">External Areas</field>
+        <field name="res_model">quotation.area</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type': 'external'}</field>
+        <field name="domain">[('type','=', 'external')]</field>
+        <field name="view_id" ref="view_internal_areas_tree"/>
+    </record>
+
+    <record id="view_internal_cleaning_items_tree" model="ir.ui.view">
+        <field name="name">Internal Cleaning Items</field>
+        <field name="model">quotation.cleaning.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_internal_cleaning_items" model="ir.actions.act_window">
+        <field name="name">Internal Cleaning Items</field>
+        <field name="res_model">quotation.cleaning.item</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type': 'internal'}</field>
+        <field name="domain">[('type','=', 'internal')]</field>
+        <field name="view_id" ref="view_internal_cleaning_items_tree"/>
+    </record>
+
+    <record id="view_external_cleaning_items_tree" model="ir.ui.view">
+        <field name="name">External Cleaning Items</field>
+        <field name="model">quotation.cleaning.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_external_cleaning_items" model="ir.actions.act_window">
+        <field name="name">External Cleaning Items</field>
+        <field name="res_model">quotation.cleaning.item</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type': 'external'}</field>
+        <field name="domain">[('type','=', 'external')]</field>
+        <field name="view_id" ref="view_external_cleaning_items_tree"/>
+    </record>
+
+    <record id="view_steam_items_tree" model="ir.ui.view">
+        <field name="name">Steam Items</field>
+        <field name="model">quotation.steam.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_steam_items" model="ir.actions.act_window">
+        <field name="name">Steam Items</field>
+        <field name="res_model">quotation.steam.item</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_steam_items_tree"/>
+    </record>
+
+    <record id="view_marble_items_tree" model="ir.ui.view">
+        <field name="name">Marble Items</field>
+        <field name="model">quotation.marble.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_en"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_marble_items" model="ir.actions.act_window">
+        <field name="name">Marble Items</field>
+        <field name="res_model">quotation.marble.item</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_marble_items_tree"/>
+    </record>
+
+    <record id="view_housekeeping_materials_tree" model="ir.ui.view">
+        <field name="name">Housekeeping Materials</field>
+        <field name="model">quotation.housekeeping.material</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_housekeeping_materials" model="ir.actions.act_window">
+        <field name="name">Housekeeping Materials</field>
+        <field name="res_model">quotation.housekeeping.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_housekeeping_materials_tree"/>
+    </record>
+
+    <record id="view_cleaning_materials_tree" model="ir.ui.view">
+        <field name="name">Cleaning Materials</field>
+        <field name="model">quotation.cleaning.material</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_cleaning_materials" model="ir.actions.act_window">
+        <field name="name">Cleaning Materials</field>
+        <field name="res_model">quotation.cleaning.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_cleaning_materials_tree"/>
+    </record>
+
+    <record id="view_steam_materials_tree" model="ir.ui.view">
+        <field name="name">Steam Materials</field>
+        <field name="model">quotation.steam.material</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_steam_materials" model="ir.actions.act_window">
+        <field name="name">Steam Materials</field>
+        <field name="res_model">quotation.steam.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_steam_materials_tree"/>
+    </record>
+
+    <record id="view_marble_materials_tree" model="ir.ui.view">
+        <field name="name">Marble Materials</field>
+        <field name="model">quotation.marble.material</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_marble_materials" model="ir.actions.act_window">
+        <field name="name">Marble Materials</field>
+        <field name="res_model">quotation.marble.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_marble_materials_tree"/>
+    </record>
+
+    <record id="view_equipments_tree" model="ir.ui.view">
+        <field name="name">Equipments</field>
+        <field name="model">quotation.equipment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_equipments" model="ir.actions.act_window">
+        <field name="name">Equipments</field>
+        <field name="res_model">quotation.equipment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_equipments_tree"/>
+    </record>
+
+    <record id="view_tools_tree" model="ir.ui.view">
+        <field name="name">Tools</field>
+        <field name="model">quotation.tool</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_tools" model="ir.actions.act_window">
+        <field name="name">Tools</field>
+        <field name="res_model">quotation.tool</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tools_tree"/>
+    </record>
+
+    <record id="view_spare_parts_tree" model="ir.ui.view">
+        <field name="name">Spare Parts</field>
+        <field name="model">quotation.spare.part</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="name_tr"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_spare_parts" model="ir.actions.act_window">
+        <field name="name">Spare Parts</field>
+        <field name="res_model">quotation.spare.part</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_spare_parts_tree"/>
+    </record>
+
+    <menuitem
+            id="adding_level_of_dirtiness_conf"
+            name="Levels of Dirtiness"
+            action="dareed_services.action_level_of_dirtiness"
+            parent="sale.prod_config_main"
+            sequence="3"
+            groups="sales_team.group_sale_salesman"
+    />
+
+    <menuitem id="proposal_details_config" name="Proposal Details" parent="sale.menu_sale_config" sequence="6"/>
+        <menuitem
+                id="internal_areas_conf"
+                name="Internal Areas"
+                action="dareed_services.action_internal_areas"
+                parent="dareed_services.proposal_details_config"
+                sequence="1"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="external_areas_conf"
+                name="External Areas"
+                action="dareed_services.action_external_areas"
+                parent="dareed_services.proposal_details_config"
+                sequence="2"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="internal_items_conf"
+                name="Internal Cleaning Items"
+                action="dareed_services.action_internal_cleaning_items"
+                parent="dareed_services.proposal_details_config"
+                sequence="3"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="external_items_conf"
+                name="External Cleaning Items"
+                action="dareed_services.action_external_cleaning_items"
+                parent="dareed_services.proposal_details_config"
+                sequence="4"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="steam_items_conf"
+                name="Steam Items"
+                action="dareed_services.action_steam_items"
+                parent="dareed_services.proposal_details_config"
+                sequence="5"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="marble_items_conf"
+                name="Marble Items"
+                action="dareed_services.action_marble_items"
+                parent="dareed_services.proposal_details_config"
+                sequence="6"
+                groups="sales_team.group_sale_salesman"
+        />
+
+    <menuitem id="materials_equipments_tools_config" name="Materials, Equipments &amp; Tools" parent="sale.menu_sale_config" sequence="7"/>
+        <menuitem
+                id="housekeeping_material_conf"
+                name="Housekeeping Material"
+                action="dareed_services.action_housekeeping_materials"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="1"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="cleaning_material_conf"
+                name="Cleaning Material"
+                action="dareed_services.action_cleaning_materials"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="2"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="steam_material_conf"
+                name="Steam Material"
+                action="dareed_services.action_steam_materials"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="3"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="marble_material_conf"
+                name="Marble Material"
+                action="dareed_services.action_marble_materials"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="4"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="equipments_conf"
+                name="Equipments"
+                action="dareed_services.action_equipments"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="5"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="tools_conf"
+                name="Tools"
+                action="dareed_services.action_tools"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="6"
+                groups="sales_team.group_sale_salesman"
+        />
+        <menuitem
+                id="spare_parts_conf"
+                name="Spare Parts"
+                action="dareed_services.action_spare_parts"
+                parent="dareed_services.materials_equipments_tools_config"
+                sequence="7"
+                groups="sales_team.group_sale_salesman"
+        />
+
+
+</odoo>

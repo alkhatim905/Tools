@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <record id="plp_config_settings_tree" model="ir.ui.view">
+            <field name="name">plp.config.settings.tree</field>
+            <field name="model">plp.config.settings</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="master_planner_sheet_range"/>
+                    <field name="vacant_no_cleaning_staff"/>
+                    <field name="vacant_no_marble_staff"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Menus and actions -->
+        <record id="action_plp_config_settings" model="ir.actions.act_window">
+            <field name="name">Labor Planning Configuration</field>
+            <field name="res_model">plp.config.settings</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_labor_planning.plp_config_settings_tree"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="plp_config_settings_menuitem"
+                  name="Labor Planning Configuration"
+                  parent="project.menu_project_config"
+                  sequence="2"
+                  action="action_plp_config_settings"/>
+
+    </data>
+</odoo>

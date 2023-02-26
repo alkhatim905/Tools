@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <function name="set_default_rate" model="res.config.settings"/>
+    </data>
+</odoo>

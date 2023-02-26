@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Cleaning Customer Type -->
+        <record id="cleaning_customer_type_villa" model="cleaning.customer.type">
+            <field name="name">Villa</field>
+        </record>
+        <record id="cleaning_customer_type_apartment" model="cleaning.customer.type">
+            <field name="name">Apartment</field>
+        </record>
+        <record id="cleaning_customer_type_office" model="cleaning.customer.type">
+            <field name="name">Office</field>
+        </record>
+        <record id="cleaning_customer_type_restaurant" model="cleaning.customer.type">
+            <field name="name">Restaurant</field>
+        </record>
+        <record id="cleaning_customer_type_other" model="cleaning.customer.type">
+            <field name="name">Other</field>
+        </record>
+
+        <!-- Cleaning Levels Of Dirtiness -->
+        <record id="cleaning_level_normal" model="cleaning.level.of.dirtiness">
+            <field name="name">Normal</field>
+        </record>
+        <record id="cleaning_level_medium" model="cleaning.level.of.dirtiness">
+            <field name="name">Medium</field>
+        </record>
+        <record id="cleaning_level_heavy" model="cleaning.level.of.dirtiness">
+            <field name="name">Heavy</field>
+        </record>
+        <record id="cleaning_level_very_heavy" model="cleaning.level.of.dirtiness">
+            <field name="name">Very Heavy</field>
+        </record>
+
+
+    </data>
+</odoo>

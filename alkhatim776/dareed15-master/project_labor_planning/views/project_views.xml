@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_plp" model="ir.ui.view">
+        <field name="name">project.project.view.form.plp</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_all_rating']" position="after">
+                <div>
+                    <field name="plp_active" class="oe_inline oe_input_align"/>
+                    <label for="plp_active" class="oe_inline"/>
+
+                </div>
+            </xpath>
+            <field name="user_id" position="after">
+                <field name="project_type" invisible="1"/>
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Planning Information"
+                    attrs="{'invisible': [('is_cleaning_service', '=', False), ('is_steam_service', '=', False), ('is_marble_service', '=', False)]}"
+                >
+                    <field name="is_cleaning_service" invisible="1"/>
+                    <field name="is_steam_service" invisible="1"/>
+                    <field name="is_marble_service" invisible="1"/>
+                    <group>
+                        <group string="Cleaning and Steam"
+                               attrs="{'invisible': [('is_cleaning_service', '=', False), ('is_steam_service', '=', False)]}">
+                            <field name="total_cleaning_estimated_workers" string="Estimated Workers"/>
+                            <field name="allocated_cleaning_basic_workers" string="Basic Workers"/>
+                            <field name="allocated_cleaning_overtime_workers" string="Overtime Workers"/>
+                            <hr/>
+                            <field name="total_cleaning_allocated_workers" string="Total Allocated Workers"/>
+                            <field name="total_cleaning_remaining_workers" string="Total Remaining Workers"/>
+                        </group>
+                        <group string="Marble"
+                               attrs="{'invisible': [('is_marble_service', '=', False)]}">
+                            <field name="total_marble_estimated_workers" string="Estimated Workers"/>
+                            <field name="allocated_marble_basic_workers" string="Basic Workers"/>
+                            <field name="allocated_marble_overtime_workers" string="Overtime Workers"/>
+                            <hr/>
+                            <field name="total_marble_allocated_workers" string="Total Allocated Workers"/>
+                            <field name="total_marble_remaining_workers" string="Total Remaining Workers"/>
+                        </group>
+                        <group string="Summary" attrs="{'invisible': 1}">
+                            <field name="total_estimated_workers" string="Total Estimated Workers"/>
+                            <field name="allocated_basic_workers" string="Allocated Basic Workers"/>
+                            <field name="allocated_overtime_workers" string="Allocated Overtime Workers"/>
+                            <hr/>
+                            <field name="total_allocated_workers" string="Total Allocated Workers"/>
+                            <field name="total_remaining_workers" string="Total Remaining Workers"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Tree views -->
+    <record id="project_project_add_forecast_planned_workers_to_tree" model="ir.ui.view">
+        <field name="name">project.project.add.forecast.planned.workers.to.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="dareed_project_management.view_project_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='total_planned_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='total_remaining_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='total_remaining_hours']" position="after">
+                <field name="total_estimated_workers" string="Estimated Workers"/>
+                <field name="total_allocated_workers" string="Allocated Workers"/>
+                <field name="total_remaining_workers" string="Remaining Workers"/>
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-bf">1</attribute>
+                <attribute name="decoration-success">total_remaining_workers &gt; 0</attribute>
+                <attribute name="decoration-danger">total_remaining_workers &lt; 0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

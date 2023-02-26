@@ -1,0 +1,134 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_brand_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-20 15:40+0000\n"
+"PO-Revision-Date: 2022-08-20 15:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_brand_sale
+#: model_terms:ir.ui.view,arch_db:product_brand_sale.product_brand_view
+msgid "Avatar"
+msgstr ""
+
+#. module: product_brand_sale
+#: model_terms:ir.ui.view,arch_db:product_brand_sale.brand_group_by
+#: model_terms:ir.ui.view,arch_db:product_brand_sale.view_order_product_search_inherit
+msgid "Brand"
+msgstr "موديل"
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__brand_image
+msgid "Brand Image"
+msgstr "صورة الموديل"
+
+#. module: product_brand_sale
+#: model_terms:ir.ui.view,arch_db:product_brand_sale.product_brand_view
+msgid "Brand Name"
+msgstr "اسم الموديل"
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__location_id
+msgid "Country Maker"
+msgstr "الدولة المصنعة"
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__id
+msgid "ID"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__member_ids
+msgid "Member"
+msgstr ""
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_product__brand_id
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_template__brand_id
+#: model:ir.model.fields,field_description:product_brand_sale.field_sale_report__brand_id
+msgid "Model"
+msgstr "الموديل"
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__name
+msgid "Name"
+msgstr "الموديل"
+
+#. module: product_brand_sale
+#: model:ir.model,name:product_brand_sale.model_product_product
+msgid "Product"
+msgstr "المنتج"
+
+#. module: product_brand_sale
+#: model:ir.actions.act_window,name:product_brand_sale.product_brand_action
+msgid "Product Brand"
+msgstr "موديل المنتج"
+
+#. module: product_brand_sale
+#: model:ir.ui.menu,name:product_brand_sale.brand_product_sale
+msgid "Product Brands"
+msgstr "موديلات المنتج"
+
+#. module: product_brand_sale
+#: model:ir.model.fields,field_description:product_brand_sale.field_product_brand__product_count
+msgid "Product Count"
+msgstr "عدد المنتجات"
+
+#. module: product_brand_sale
+#: model:ir.model,name:product_brand_sale.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: product_brand_sale
+#: model_terms:ir.ui.view,arch_db:product_brand_sale.product_brand_view
+msgid "Products"
+msgstr "المنتجات"
+
+#. module: product_brand_sale
+#: model:ir.model,name:product_brand_sale.model_sale_report
+msgid "Sales Analysis Report"
+msgstr "تقرير المبيعات التحليلي"
+
+#. module: product_brand_sale
+#: model:ir.model,name:product_brand_sale.model_product_brand
+msgid "product.brand"
+msgstr ""

@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <record id="project_allocation_report_tree" model="ir.ui.view">
+            <field name="name">project.allocation.report.tree</field>
+            <field name="model">project.allocation</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0" delete="0">
+                    <field name="project_id"/>
+                    <field name="date"/>
+                    <field name="allocation_qty"/>
+                    <field name="overtime"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search views -->
+        <record id="project_allocation_report_search" model="ir.ui.view">
+            <field name="name">project.allocation.report.search</field>
+            <field name="model">project.allocation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date"/>
+                    <field name="project_id"/>
+                    <group expand="1" string="Group by">
+                        <filter string="Project" name="project_allocation_id" context="{'group_by': 'project_id'}"/>
+                    </group>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Menus and actions -->
+        <record id="action_project_allocation_report" model="ir.actions.act_window">
+            <field name="name">Projects Allocation Report</field>
+            <field name="res_model">project.allocation</field>
+            <field name="view_mode">tree,pivot</field>
+            <field name="search_view_id" ref="project_labor_planning.project_allocation_report_search"/>
+            <field name="view_id" ref="project_labor_planning.project_allocation_report_tree"/>
+            <field name="context">{
+                'search_default_project_allocation_id': 1
+                }
+            </field>
+        </record>
+
+        <menuitem id="project_allocation_report_menuitem"
+                  name="Projects Allocation Report"
+                  parent="project.menu_project_report"
+                  sequence="3"
+                  action="action_project_allocation_report"/>
+
+    </data>
+</odoo>

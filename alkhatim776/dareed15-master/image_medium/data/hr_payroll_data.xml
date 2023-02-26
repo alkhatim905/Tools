@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="hr_salary_rule_accumulate_leave" model="hr.salary.rule">
+            <field name="code">Accumulate Leaves</field>
+            <field name="name">Accumulate Leaves</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.accumulate_leave_amount</field>
+            <field name="sequence" eval="12"/>
+            <field name="note">Accumulate Leave Amount</field>
+        </record>
+
+    </data>
+</odoo>

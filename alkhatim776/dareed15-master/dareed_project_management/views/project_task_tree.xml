@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="adding_tasks_and_subtasks_filter_to_tasks_tree" model="ir.ui.view">
+        <field name="name">project.task.search.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/filter[@name='starred']" position="after">
+                <filter string="Parent Tasks" name="parent_tasks_only" domain="[('parent_id','=', False)]"/>
+                <filter string="Sub-Tasks" name="subtasks_only" domain="[('parent_id', '!=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="making_project_task_tree_editable" model="ir.ui.view">
+        <field name="name">Making Project Task Tree Editable</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-it">parent_id!=False</attribute>
+                <attribute name="decoration-primary">parent_id!=False</attribute>
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+            <!-- <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='stage_id']" position="replace"/>
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="task_sequence"/>
+            </xpath>
+            <xpath expr="//field[@name='project_id']" position="before">
+                <field name="parent_id" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='planned_hours']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <record id="making_project_task_tree_fields_readonly" model="ir.ui.view">-->
+<!--        <field name="name">Making Project Task Tree fields readonly</field>-->
+<!--        <field name="model">project.task</field>-->
+<!--        <field name="inherit_id" ref="project.view_task_tree2"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//tree" position="attributes">-->
+<!--                <attribute name="decoration-it">parent_id!=False</attribute>-->
+<!--                <attribute name="decoration-primary">parent_id!=False</attribute>-->
+<!--                <attribute name="editable">bottom</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='user_id']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='stage_id']" position="replace"/>-->
+<!--            <xpath expr="//field[@name='name']" position="before">-->
+<!--                <field name="task_sequence"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='project_id']" position="before">-->
+<!--                <field name="parent_id" readonly="1"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+    </record>
+
+</odoo>

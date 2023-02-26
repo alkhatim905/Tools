@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+            id="action_report_cleaning_marble_quotation"
+            string="Cleaning and Marble Quotation (.doc)"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="dareed_report_py3o.report_cleaning_marble_quotation_doc"
+            name="dareed_report_py3o.report_cleaning_marble_quotation_doc"
+            print_report_name="(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)"
+    />
+
+    <record id="dareed_report_py3o.action_report_cleaning_marble_quotation" model="ir.actions.report">
+        <field name="report_type">py3o</field>
+        <field name="py3o_filetype">doc</field>
+        <field name="module">dareed_report_py3o</field>
+        <field name="py3o_template_fallback">cleaning_marble_quotation.odt</field>
+    </record>
+
+</odoo>

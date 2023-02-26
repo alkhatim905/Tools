@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--         <record id="view_account_payment_invoice_form_inherit_branch" model="ir.ui.view">
+            <field name="name">view.account.payment.invoice.form.inherit.branch</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='communication']" position="after">
+
+                        <field name="branch_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record> -->
+
+        <record id="view_view_hr_payslip_by_inherit_branch" model="ir.ui.view">
+            <field name="name">view.hr.payslip.employees.form.inherit.branch</field>
+            <field name="model">hr.payslip.employees</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_by_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                     <group colspan="2">
+                        <separator string="Branch" colspan="2"/>
+                        <newline/>
+                        <span class="text-muted">Set a specific branch if you wish to select all the employees from this branch (and subdepartments) at once.</span>
+                        <field name="branch_id" nolabel="1"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='work_email']" position="after">
+                    <!-- Add your fields or attributes here -->
+                            <field name="branch_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+</odoo>

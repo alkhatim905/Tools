@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="house_service_search" model="ir.ui.view">
+        <field name="name">house.service.search</field>
+        <field name="model">house.service</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="customer"/>
+                <separator/>
+                <filter string="Cleaning" name="sheet_has_cleaning" domain="[('is_cleaning_service_saved', '=', True)]"/>
+                <filter string="Steam" name="sheet_has_steam" domain="[('is_steam_service_saved', '=', True)]"/>
+                <filter string="Marble" name="sheet_has_marble" domain="[('is_marble_service_saved', '=', True)]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_house_service_form" model="ir.ui.view">
+        <field name="name">Calculation Sheet</field>
+        <field name="model">house.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="sale_order_id" invisible="1"/>
+                    <field name="active" invisible="1"/>
+                    <button string="Generate Quotation" name="generate_quotation" type="object"
+                            default_focus="1" class="btn-primary"/>
+                    <button string="Cancel Quotation" name="unlink_quotation" type="object"
+                            default_focus="2" class="btn-primary"
+                            attrs="{'invisible': [('sale_order_id','=', False)]}"/>
+                    <button string="Generate Project" name="generate_project" type="object"
+                            default_focus="3" class="btn-primary"
+                            attrs="{'invisible': ['|', ('project_id','!=', False),('project_marble_id','!=', False)]}"/>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="customer" options="{'no_create': True, 'no_quick_create': True}" context="{'default_is_company': True}"/>
+                            <field name="sale_order_id" readonly="1" string="Quotation"
+                                   attrs="{'invisible': [('sale_order_id','=', False)]}"
+                            />
+                            <field name="pricelist_id"/>
+                            <field name="project_id" readonly="1" attrs="{'invisible': [('project_id','=', False)]}"/>
+                            <field name="project_marble_id" readonly="1" attrs="{'invisible': [('project_marble_id','=', False)]}"/>
+                            <field name="salesperson" required="1"/>
+                            <field name="customer_contact_person" domain="[('parent_id', '=', customer)]"
+                                   context="{'default_parent_id': customer, 'default_customer_type': 'person', 'form_view_ref': 'dareed_services.partner_contact_form_view'}"
+                                   required="1" attrs="{'readonly': [('customer','=', False)]}"
+                            />
+                            <field name="customer_contact_number" widget="phone"
+                                   attrs="{'invisible': [('customer_contact_number','=', False)]}"/>
+                            <field name="calculate_markup" invisible="1"/>
+                            <field name="is_cleaning_service"/>
+                            <field name="is_steam_service"/>
+                            <field name="is_marble_service"/>
+                            <field name="contracts"/>
+                        </group>
+                        <group col="1">
+                            <field name="is_cleaning_service" invisible="1"/>
+                            <field name="is_marble_service" invisible="1"/>
+                            <field name="is_steam_service" invisible="1"/>
+                            <table border="1">
+                                <thead>
+                                    <td style="padding: 5px; font-weight: bold; width: 70%;">Project Hours</td>
+                                    <td style="padding: 5px; text-align: center; font-weight: bold; width: 30%;">Hours
+                                    </td>
+                                </thead>
+                                <tr attrs="{'invisible': [('is_cleaning_service', '=', False)]}">
+                                    <td style="padding: 5px;">Hours Of Cleaning (Quick)</td>
+                                    <td style="padding: 5px; text-align: center;">
+                                        <field name="hours_of_cleaning_quick"/>
+                                    </td>
+                                </tr>
+                                <tr attrs="{'invisible': [('is_cleaning_service', '=', False)]}">
+                                    <td style="padding: 5px;">Hours Of Cleaning (Misc.)</td>
+                                    <td style="padding: 5px; text-align: center;">
+                                        <field name="hours_of_cleaning_misc"/>
+                                    </td>
+                                </tr>
+                                <tr attrs="{'invisible': [('is_cleaning_service', '=', False)]}">
+                                    <td style="padding: 5px;">Project Extra Risk Hours (Cleaning)</td>
+                                    <td style="padding: 5px; text-align: center;">
+                                        <field name="hours_of_cleaning_risk_hours"/>
+                                    </td>
+                                </tr>
+                                <tr attrs="{'invisible': [('is_cleaning_service', '=', False)]}">
+                                    <td style="padding: 5px; text-align: right; font-weight: bold ;">Total
+                                        Cleaning
+                                        Hours
+                                    </td>
+                                    <td style="padding: 5px; text-align: center; font-weight: bold ;">
+                                        <field name="hours_of_cleaning_total"/>
+                                    </td>
+                                </tr>
+                                <tr attrs="{'invisible': [('is_marble_service', '=', False)]}">
+                                    <td style="padding: 5px;">Hours Of Marble</td>
+                                    <td style="padding: 5px; text-align: center;">
+                                        <field name="hours_of_marble"/>
+                                    </td>
+                                </tr>
+                                    <tr attrs="{'invisible': [('is_marble_service', '=', False)]}">
+                                        <td style="padding: 5px;">Project Extra Risk Hours (Marble)</td>
+                                        <td style="padding: 5px; text-align: center;">
+                                            <field name="hours_of_marble_risk_hours"/>
+                                        </td>
+                                    </tr>
+                                    <tr attrs="{'invisible': [('is_marble_service', '=', False)]}">
+                                        <td style="padding: 5px; text-align: right; font-weight: bold ;">Total
+                                            Marble
+                                            Hours
+                                        </td>
+                                        <td style="padding: 5px; text-align: center; font-weight: bold ;">
+                                            <field name="hours_of_marble_total"/>
+                                        </td>
+                                    </tr>
+                                    <tr attrs="{'invisible': [('is_steam_service', '=', False)]}">
+                                        <td style="padding: 5px;">Hours Of Steam</td>
+                                        <td style="padding: 5px; text-align: center;">
+                                            <field name="hours_of_steam"/>
+                                        </td>
+                                    </tr>
+                                    <tr attrs="{'invisible': [('is_steam_service', '=', False)]}">
+                                        <td style="padding: 5px;">Project Extra Risk Hours (Steam)</td>
+                                        <td style="padding: 5px; text-align: center;">
+                                            <field name="hours_of_steam_risk_hours"/>
+                                        </td>
+                                    </tr>
+                                    <tr attrs="{'invisible': [('is_steam_service', '=', False)]}">
+                                        <td style="padding: 5px; text-align: right; font-weight: bold ;">Total Steam
+                                            Hours
+                                        </td>
+                                        <td style="padding: 5px; text-align: center; font-weight: bold ;">
+                                            <field name="hours_of_steam_total"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; text-align: left; font-weight: bold ;">Total Project Hours</td>
+                                        <td style="padding: 5px; text-align: center; font-weight: bold ;">
+                                            <field name="hours_of_project_with_risk"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; text-align: left; font-weight: bold ;">Total Planned Workers</td>
+                                        <td style="padding: 5px; text-align: center; font-weight: bold ;">
+                                            <field name="total_planned_workers"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </group>
+                    </group>
+                    <notebook>
+                        <page string="Workers Contracts">
+                            <field name="house_keeping" widget="one2many" nolabel="1" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="type_of_service"/>
+                                    <field name="unit_of_measure"/>
+                                    <field name="qty"/>
+                                    <field name="number_of_units"/>
+                                    <field name="total_qty"/>
+                                    <field name="frequency"/>
+                                    <field name="number_of_workers" readonly="1" force_save="1"/>
+                                    <field name="total_price" readonly="1"/>
+                                    <field name="calculate_round" readonly="1"/>
+                                    <field name="markup" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Cleaning">
+                            <h2 style="padding-top: 5px;"/>
+                            <group>
+                                <group>
+                                    <field name="cleaning_customer_type"/>
+                                    <field name="cleaning_level_of_dirtiness"/>
+                                </group>
+                                <group>
+                                    <field name="cleaning_length_of_one_floor"/>
+                                    <field name="cleaning_width_of_one_floor"/>
+                                    <field name="cleaning_one_floor_area"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Indoor Cleaning (All)</h3>
+                                    <field name="indoor_cleanings_all" nolabel="1" colspan="2">
+<!--                                        <tree editable="bottom" create="false" delete="false">-->
+                                        <tree editable="bottom" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="floor_area" widget="Percent"/>
+                                            <field name="with_furniture"/>
+                                            <field name="area_to_clean" readonly="1" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Indoor Cleaning (Restaurant)</h3>
+                                    <field name="indoor_cleanings_restaurant" nolabel="1" colspan="2"
+                                           style="padding-left: 3px;"
+                                    >
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="area_to_clean"/>
+                                            <field name="level_of_dirtiness" required="1"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Items by width and length:</h3>
+                                    <field name="indoor_items_by_width_and_length" nolabel="1" colspan="2">
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="length"/>
+                                            <field name="width"/>
+                                            <field name="area_to_clean" readonly="1" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Outside yard floor:</h3>
+                                    <field name="indoor_outside_yard_floor" nolabel="1" colspan="2"
+                                           style="padding-left: 3px;">
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="length"/>
+                                            <field name="width"/>
+                                            <field name="area_to_clean" readonly="1" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Curtains (vacuum)</h3>
+                                    <field name="indoor_curtains" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Curtain '+str(len(indoor_curtains)+1),
+                                           'default_level_of_dirt': cleaning_level_of_dirtiness}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="length"/>
+                                            <field name="width"/>
+                                            <field name="area_to_clean" readonly="1" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Items by Area:</h3>
+                                    <field name="indoor_items_by_area" nolabel="1" colspan="2">
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="area_to_clean" sum="Total"
+                                                   attrs="{'readonly': [('level_of_dirt', '=', False)]}"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">External Facades:</h3>
+                                    <field name="indoor_external_facades" nolabel="1" colspan="2"
+                                           style="padding-left: 3px;">
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="area_to_clean"
+                                                   attrs="{'readonly': [('level_of_dirt', '=', False)]}"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Items by Piece:</h3>
+                                    <field name="indoor_items_by_piece" nolabel="1" colspan="2"
+                                           style="padding-left: 3px;"
+                                           context="{'default_level_of_dirt': cleaning_level_of_dirtiness}"
+                                    >
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="level_of_dirt" invisible="1"/>
+                                            <field name="quantity"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                        </page>
+                        <page string="Cleaning Misc.">
+                            <group>
+                                <h3 style="padding-top: 5px;">Porcelain or Ceramic Floors</h3>
+                                <field name="misc_cleaning_porcelain_ceramic" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Floor ' + str(len(misc_cleaning_porcelain_ceramic)+1)}"
+                                >
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="level_of_dirt"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="coating"/>
+                                        <field name="length"/>
+                                        <field name="width"/>
+                                        <field name="area_to_clean" readonly="1" sum="Total"/>
+                                        <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Marble Floors</h3>
+                                <field name="misc_cleaning_marble" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Floor ' + str(len(misc_cleaning_marble)+1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="level_of_dirt"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="length"/>
+                                        <field name="width"/>
+                                        <field name="area_to_clean" readonly="1" sum="Total"/>
+                                        <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Parkay Floors</h3>
+                                <field name="misc_cleaning_parkay" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Floor ' + str(len(misc_cleaning_parkay)+1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="level_of_dirt"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="length"/>
+                                        <field name="width"/>
+                                        <field name="area_to_clean" readonly="1" sum="Total"/>
+                                        <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Window shutters (both sides)</h3>
+                                <field name="misc_cleaning_windows_shutter" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Shutter ' + str(len(misc_cleaning_windows_shutter)+1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="level_of_dirtiness"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="length"/>
+                                        <field name="width"/>
+                                        <field name="qty"/>
+                                        <field name="area_to_clean" readonly="1" sum="Total"/>
+                                        <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Windows</h3>
+                                <field name="misc_cleaning_windows" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Window ' + str(len(misc_cleaning_windows)+1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="level_of_dirtiness"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="length"/>
+                                        <field name="width"/>
+                                        <field name="qty"/>
+                                        <field name="area_to_clean" readonly="1"/>
+                                        <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Removal of Window frame sticker</h3>
+                                    <field name="misc_cleaning_removal_window_frame" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Removal of Window frame sticker ' + str(len(misc_cleaning_removal_window_frame)+1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="state"/>
+                                            <field name="linear_m" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Service Items From Dareed</h3>
+                                    <field name="misc_cleaning_service_items" nolabel="1" colspan="2"
+                                           style="padding-left: 4px;"
+                                           context="{'default_name': 'Service items from Dareed ' + str(len(misc_cleaning_service_items)+1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="description"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Items from 3rd party</h3>
+                                    <field name="misc_cleaning_3rd_party_items" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Items from 3rd party ' + str(len(misc_cleaning_3rd_party_items)+1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="description"/>
+                                            <field name="cost_in_sr" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Painted Walls &amp; Wall paper</h3>
+                                    <field name="misc_cleaning_painted_walls_wallpapers" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Wall ' + str(len(misc_cleaning_painted_walls_wallpapers)+1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="area_to_clean" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Miscellaneous</h3>
+                                <field name="misc_cleaning_miscellaneous_item" nolabel="1" colspan="2">
+                                    <tree editable="bottom">
+                                        <field name="name" context="{'default_is_cleaning_misc': True}"/>
+                                        <field name="unit"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Steam">
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Mockett</h3>
+                                    <field name="steam_cleaning_mocket" nolabel="1" colspan="2"
+                                           context="{'default_name': 'area (sq. m)'}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="qty"/>
+                                            <field name="price" readonly="1"/>
+                                            <field name="s_price" sum="Total"/>
+                                            <field name="time_in_mins" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Carpets</h3>
+                                    <field name="steam_cleaning_carpets" nolabel="1" colspan="2"
+                                           style="padding-left: 4px;"
+                                           context="{'default_name': 'area (sq. m)'}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="qty"/>
+                                            <field name="price" readonly="1"/>
+                                            <field name="s_price" sum="Total"/>
+                                            <field name="time_in_mins" readonly="1" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Arabic Majles</h3>
+                                <field name="steam_cleaning_arabic_seat" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Linear meter (LM)'}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="type"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Mattress</h3>
+                                <field name="steam_cleaning_mattress" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Mattress ' + str(len(steam_cleaning_mattress)+1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="type"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Curtains</h3>
+                                <field name="steam_cleaning_curtains" nolabel="1" colspan="2"
+                                       context="{'default_name': 'area (sq. m) (stretched)'}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="type"/>
+                                        <field name="is_chiffon"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Miscellaneous</h3>
+                                <field name="steam_cleaning_miscellaneous" nolabel="1" colspan="2">
+                                    <tree editable="bottom">
+                                        <field name="name" context="{'default_is_steam': True}"/>
+                                        <field name="unit"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Marble">
+                            <group>
+                                <h3 style="padding-top: 5px;">Marble Surface</h3>
+                                <field name="marble_cleaning_surface" nolabel="1" colspan="2"
+                                       context="{'default_name': 'Surface '+ str(len(marble_cleaning_surface) + 1)}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_id" invisible="1"/>
+                                        <field name="price" invisible="1"/>
+                                        <field name="surface_type"/>
+                                        <field name="service_type"/>
+                                        <field name="area" sum="Total"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Polishing Surface</h3>
+                                    <field name="marble_polishing_surface" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Polishing of marble base-board '+ str(len(marble_polishing_surface) + 1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="linear_m" sum="Total"/>
+                                            <field name="s_price" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Protection Surface</h3>
+                                    <field name="marble_protection_surface" nolabel="1" colspan="2"
+                                           style="padding-left: 4px;"
+                                           context="{'default_name': 'Protection of marble floor '+ str(len(marble_protection_surface) + 1)}">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="product_id" invisible="1"/>
+                                            <field name="area" sum="Total"/>
+                                            <field name="s_price" sum="Total"/>
+                                            <field name="time_in_hours" widget="float_time" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Extra Items</h3>
+                                    <field name="marble_extra_items" nolabel="1" colspan="2"
+                                           context="{'default_name': 'Extra Item '+str(len(marble_extra_items)+1)}"
+                                    >
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                            <field name="s_price" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group></group>
+                            </group>
+                            <hr/>
+                            <group>
+                                <h3 style="padding-top: 5px;">Miscellaneous</h3>
+                                <field name="marble_miscellaneous_item" nolabel="1" colspan="2">
+                                    <tree editable="bottom">
+                                        <field name="name" context="{'default_is_marble': True}"/>
+                                        <field name="unit"/>
+                                        <field name="qty"/>
+                                        <field name="price" readonly="1"/>
+                                        <field name="s_price" sum="Total"/>
+                                        <field name="time_in_mins" readonly="1" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Proposal Details">
+                            <group>
+                                <field name="total_duration_days"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected Internal Areas</h3>
+                                    <field name="selected_quotation_areas" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected External Areas</h3>
+                                    <field name="selected_quotation_areas_external" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected Internal Cleaning Items</h3>
+                                    <field name="selected_quotation_cleaning_items" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected External Cleaning Items</h3>
+                                    <field name="selected_quotation_cleaning_items_external" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected Steam Items</h3>
+                                    <field name="selected_quotation_steam_items" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Selected Marble Items</h3>
+                                    <field name="selected_quotation_marble_items" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Materials, Equipments, Spare parts &amp; Tools">
+                            <group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Housekeeping Materials</h3>
+                                    <field name="selected_quotation_housekeeping_material" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Cleaning Materials</h3>
+                                    <field name="selected_quotation_cleaning_material" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Steam Materials</h3>
+                                    <field name="selected_quotation_steam_material" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Marble Materials</h3>
+                                    <field name="selected_quotation_marble_material" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Equipments</h3>
+                                    <field name="selected_quotation_equipments" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Tools</h3>
+                                    <field name="selected_quotation_tools" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <h3 style="padding-top: 5px;">Spare Parts</h3>
+                                    <field name="selected_quotation_spare_parts" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_house_service_tree" model="ir.ui.view">
+        <field name="name">Calculation Sheet</field>
+        <field name="model">house.service</field>
+        <field name="arch" type="xml">
+            <tree default_order="create_date desc">
+                <field name="name"/>
+                <field name="customer"/>
+                <field name="date"/>
+                <field name="state"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="partner_contact_form_view" model="ir.ui.view">
+        <field name="name">Customer Contact</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Contact / Address">
+                <sheet>
+                    <field name="type" required="1" widget="radio" options="{'horizontal': true}"/>
+                    <field name="parent_id" invisible="1"/>
+                    <hr/>
+                    <group>
+                        <group>
+                            <field name="name" string="Contact Name" />
+<!--                            <field name="name" string="Contact Name" attrs="{'required' : [('type', '=', 'contact')]}"/>-->
+                            <field name="title" placeholder="e.g. Mr." attrs="{'invisible': [('type','!=', 'contact')]}"/>
+                            <field name="function" placeholder="e.g. Sales Director" attrs="{'invisible': [('type','!=', 'contact')]}"/>
+                            <field name="location_url" widget="url" invisible="1"/>
+                            <field name="parent_id"/>
+                            <field name="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="comment" placeholder="internal note..."/>
+                        </group>
+                    </group>
+                    <!-- <field name="supplier" invisible="True"/> -->
+                    <!-- <field name="customer" invisible="True"/> -->
+                    <field name="lang" invisible="True"/>
+                    <!-- <field name="image" invisible="True"/> -->
+                    <field name="user_id" invisible="True"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_house_services" model="ir.actions.act_window">
+        <field name="name">Calculation Sheet</field>
+        <field name="res_model">house.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="view_id" ref="view_house_service_tree"/>
+        <field name="search_view_id" ref="dareed_services.house_service_search"/>
+    </record>
+
+    <menuitem
+            id="house_service_menuitem"
+            name="Calculation Sheet"
+            action="dareed_services.action_house_services"
+            parent="sale.sale_order_menu"
+            sequence="0"
+            groups="sales_team.group_sale_salesman"
+    />
+
+</odoo>

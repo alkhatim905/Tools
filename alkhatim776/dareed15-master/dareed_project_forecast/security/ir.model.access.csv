@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_forecast_cleaning,access.project.forecast.cleaning,model_project_forecast_cleaning,,1,1,1,1
+access_project_forecast_marble,access.project.forecast.marble,model_project_forecast_marble,,1,1,1,1
+access_project_daily_forecast,access.project.daily.forecast,model_project_daily_forecast,,1,1,1,0

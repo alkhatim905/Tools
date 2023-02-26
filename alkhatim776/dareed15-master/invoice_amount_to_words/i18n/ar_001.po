@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* invoice_amount_to_words
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-22 10:37+0000\n"
+"PO-Revision-Date: 2021-04-22 10:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: invoice_amount_to_words
+#: model_terms:ir.ui.view,arch_db:invoice_amount_to_words.report_invoice_IATW
+msgid "<strong>Amount in words: </strong>"
+msgstr "<strong>المبلغ</strong>"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_bank_statement_line__total_amount_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__total_amount_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_payment__total_amount_words
+#: model_terms:ir.ui.view,arch_db:invoice_amount_to_words.account_invoice_form_IATW
+msgid "Amount in Words"
+msgstr "المبلغ"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__ar
+msgid "Arabic"
+msgstr "العربية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_bank_statement_line__choose_lang
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__choose_lang
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_payment__choose_lang
+msgid "Choose a language..."
+msgstr "اختر اللغة ..."
+
+#. module: invoice_amount_to_words
+#: model:ir.model,name:invoice_amount_to_words.model_res_currency
+msgid "Currency"
+msgstr "العملة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_res_currency__currency_subunit_label
+msgid "Currency Subunit"
+msgstr "الوحدة الفرعية للعملة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,help:invoice_amount_to_words.field_res_currency__currency_subunit_label
+msgid "Currency Subunit Name"
+msgstr "اسم الوحدة الفرعية للعملة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_res_currency__currency_unit_label
+msgid "Currency Unit"
+msgstr "وحدة العملة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,help:invoice_amount_to_words.field_res_currency__currency_unit_label
+msgid "Currency Unit Name"
+msgstr "اسم وحدة العملة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__dk
+msgid "Danish"
+msgstr "الدانماركية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__display_name
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_res_currency__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__nl
+msgid "Dutch"
+msgstr "الهولندية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__en
+msgid "English"
+msgstr "الإنجليزية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__en_gb
+msgid "English - Great Britain"
+msgstr "الإنجليزية - بريطانيا العظمى"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__fr
+msgid "French"
+msgstr "الفرنسية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__de
+msgid "German"
+msgstr "الألمانية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__id
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_res_currency__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__id
+msgid "Indonesian"
+msgstr "الأندونيسية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model,name:invoice_amount_to_words.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_bank_statement_line__lang
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__lang
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_payment__lang
+msgid "Language"
+msgstr "اللغة"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move____last_update
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_res_currency____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__lv
+msgid "Latvian"
+msgstr "لاتفية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__lt
+msgid "Lithuanian"
+msgstr "الليتوانية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__no
+msgid "Norwegian"
+msgstr "النرويجية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__pl
+msgid "Polish"
+msgstr "البولندية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__ru
+msgid "Russian"
+msgstr "الروسية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_bank_statement_line__am_in_report
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_move__am_in_report
+#: model:ir.model.fields,field_description:invoice_amount_to_words.field_account_payment__am_in_report
+msgid "Show in invoice report"
+msgstr ""
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__sl
+msgid "Slovene"
+msgstr "السلوفينية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__es
+msgid "Spanish"
+msgstr "الإسبانية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__tr
+msgid "Turkish"
+msgstr "التركية"
+
+#. module: invoice_amount_to_words
+#: model:ir.model.fields.selection,name:invoice_amount_to_words.selection__account_move__lang__uk
+msgid "Ukrainian"
+msgstr "الأوكرانية"

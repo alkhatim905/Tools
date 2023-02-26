@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_kpi,access.employee.kpi,model_employee_kpi,,1,1,1,1
+access_employee_kpi_line,access.employee.kpi.line,model_employee_kpi_line,,1,1,1,1
+access_employee_kpi_history,access.employee.kpi.history,model_employee_kpi_history,,1,1,1,1

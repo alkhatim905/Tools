@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+
+    <t t-name="PLP.optionButton">
+        <div class="o_dropdown dropdown o_plp_period_filter">
+            <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="fa fa-calendar"/>
+                Period:
+                <t t-if="period == 'month'">Monthly</t>
+                <t t-if="period == 'week'">Weekly</t>
+                <t t-if="period == 'day'">Daily</t>
+            </a>
+            <div class="dropdown-menu o_filters_menu" role="menu">
+                <a role="menuitem" data-value="month"
+                   t-attf-class="dropdown-item #{'o_plp_option_plp_period' + (period == 'month' and ' selected' or '')}">
+                    Monthly
+                </a>
+                <a role="menuitem" data-value="week"
+                   t-attf-class="dropdown-item #{'o_plp_option_plp_period' + (period == 'week' and ' selected' or '')}">
+                    Weekly
+                </a>
+                <a role="menuitem" data-value="day"
+                   t-attf-class="dropdown-item #{'o_plp_option_plp_period' + (period == 'day' and ' selected' or '')}">
+                    Daily
+                </a>
+            </div>
+        </div>
+        <div class="o_dropdown dropdown o_plp_project_type_filter">
+
+            <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="fa fa-calendar"/>
+                Project Type:
+                <t t-if="project_type == 'cleaning'">Cleaning And Steam</t>
+                <t t-if="project_type == 'marble'">Marble</t>
+            </a>
+            <div class="dropdown-menu o_filters_menu" role="menu">
+                <a role="menuitem" data-value="cleaning"
+                   t-attf-class="dropdown-item #{'o_plp_option_plp_project_type' + (project_type == 'cleaning' and ' selected' or '')}">
+                    Cleaning And Steam
+                </a>
+                <a role="menuitem" data-value="marble"
+                   t-attf-class="dropdown-item #{'o_plp_option_plp_project_type' + (project_type == 'marble' and ' selected' or '')}">
+                    Marble
+                </a>
+            </div>
+
+        </div>
+    </t>
+
+</templates>

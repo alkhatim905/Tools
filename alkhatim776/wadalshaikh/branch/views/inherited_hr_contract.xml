@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--  Contract Inherit Form View to Modify it -->
+        <record id="view_hr_contract_inherit_branch" model="ir.ui.view">
+            <field name="name">hr.contract.form.inherit.branch</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='analytic_account_id']" position="after">
+                    <!-- Add your fields or attributes here -->
+                            <field name="branch_id"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+        <!--  Hr Employee Inherit Form View to Modify it -->
+        <record id="view_hr_employee_inherit_branch" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit.branch</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="before">
+                    <!-- Add your fields or attributes here -->
+                            <field name="branch_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

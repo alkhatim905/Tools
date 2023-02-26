@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="inherit_res_company_view_form" model="ir.ui.view">
+            <field name="name">inherit.res.company.view</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/div/field[@name='street2']" position="after">
+                    <field name="building_no" placeholder="Building No..."/>
+                    <field name="district" placeholder="District..."/>
+                </xpath>
+                <xpath expr="//group/group/div" position="after">
+                    <field name="additional_no"/>
+                    <field name="other_seller_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

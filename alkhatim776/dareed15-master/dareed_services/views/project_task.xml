@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="editing_project_task_form_view" model="ir.ui.view">
+        <field name="name">editing.project.task.form.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group[2]" position="inside">
+                <field name="uom_id"/>
+                <field name="uom_quantity"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="editing_project_task_tree_view" model="ir.ui.view">
+        <field name="name">editing.project.task.tree.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='project_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='project_id']" position="after">
+                <field name="uom_quantity"/>
+                <field name="uom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

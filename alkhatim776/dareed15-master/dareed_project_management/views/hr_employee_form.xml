@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="adding_is_worker_to_hr_employee" model="ir.ui.view">
+        <field name="name">Adding Is Worker To HR Employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_worker"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

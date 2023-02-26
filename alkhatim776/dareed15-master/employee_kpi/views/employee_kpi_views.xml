@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_kpi_form_inherit" model="ir.ui.view">
+        <field name="name">employee.kpi.form.inherit</field>
+        <field name="model">employee.kpi</field>
+        <field name="arch" type="xml">
+            <form string="Employee KPI Configuration">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="salary_rule_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_kpi_tree_inherit" model="ir.ui.view">
+        <field name="name">employee.kpi.tree.inherit</field>
+        <field name="model">employee.kpi</field>
+        <field name="arch" type="xml">
+            <tree string="Employee KPI Configurations">
+                <field name="name"/>
+                <field name="salary_rule_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_kpi_action" model="ir.actions.act_window">
+        <field name="name">Employee KPI Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.kpi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new employee KPI configuration
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="employee_kpi_menu" action="employee_kpi_action" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration" sequence="10" name="Employee KPI's Configuration"/>
+
+
+    <record id="view_employee_kpi_history_form_inherit" model="ir.ui.view">
+        <field name="name">employee.kpi.history.form.inherit</field>
+        <field name="model">employee.kpi.history</field>
+        <field name="arch" type="xml">
+            <form string="Employee KPI">
+                <header>
+                    <button name="action_confirm" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'draft')]}" string="Confirm" groups="hr.group_hr_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="employee_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="month" invisible="1"/>
+                        <field name="year" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="KPI's" name="KPI">
+                            <field name="kpi_line_ids" colspan="4" nolabel="1" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                <tree string="KPI Lines" editable="bottom">
+                                    <field name="employee_kpi_id"/>
+                                    <field name="employee_kpi_history_id" invisible="1"/>
+                                    <field name="apply"/>
+                                </tree>
+                                <form string="Payslip Line">
+                                    <group col="4">
+                                        <field name="employee_kpi_id"/>
+                                        <field name="employee_kpi_history_id" invisible="1"/>
+                                        <field name="apply"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_kpi_history_tree_inherit" model="ir.ui.view">
+        <field name="name">employee.kpi.history.tree.inherit</field>
+        <field name="model">employee.kpi.history</field>
+        <field name="arch" type="xml">
+            <tree string="Employee KPIs">
+                <field name="employee_id"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_kpi_history_action" model="ir.actions.act_window">
+        <field name="name">Employee KPI History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.kpi.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new employee KPI.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="employee_kpi_history_menu" action="employee_kpi_history_action" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration" sequence="10" name="Employee KPI's"/>
+
+</odoo>

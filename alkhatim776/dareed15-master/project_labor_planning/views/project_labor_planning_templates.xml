@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="project_labor_planning_template">
+
+        <style>
+            .table-scroll {
+            position: relative;
+            width:100%;
+            z-index: 1;
+            margin: auto;
+            overflow: auto;
+            height: 415px;
+            }
+            .table-scroll table {
+            width: 100%;
+            min-width: 1280px;
+            margin: auto;
+            }
+            .table-wrap {
+            position: relative;
+            }
+            .table-scroll th,
+            .table-scroll td {
+            vertical-align: top;
+            }
+            .table-scroll thead th {
+            background: #eee;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            }
+            th:first-child {
+            position: -webkit-sticky;
+            position: sticky;
+            background-color: #eee;
+            left: 0;
+            z-index: 2;
+            }
+            .sticky-col1 {
+            position: -webkit-sticky;
+            position: sticky;
+            left: 200px;
+            z-index: 2;
+            }
+            .sticky-col2 {
+            position: -webkit-sticky;
+            position: sticky;
+            left: 267px;
+            z-index: 2;
+            }
+            thead th:first-child {
+            z-index: 5;
+            }
+            thead th:nth-child(2) {
+            z-index: 5;
+            }
+            thead th:nth-child(3) {
+            z-index: 5;
+            }
+            thead tr:nth-child(2) th{
+            top: 63px;
+            }
+            thead tr:nth-child(3) th{
+            top: 88px;
+            }
+
+        </style>
+        <div class="o_form_view">
+            <div class="page o_form_sheet_bg">
+                <div class="o_form_sheet">
+                    <div class="h2">Master Planner Sheet</div>
+                    <div class="table-scroll">
+                        <table class="table table-sm plp_table">
+                            <thead>
+                                <tr class="table-active">
+                                    <th class="col-sm-4" style="width:25% !important">
+                                        <strong>Project Name</strong>
+                                    </th>
+                                    <th class="col-sm-4 sticky-col1">
+                                        <strong>Estimated Staff</strong>
+                                    </th>
+                                    <th class="col-sm-4 sticky-col2">
+                                        <strong>Planned Staff</strong>
+                                    </th>
+                                    <th t-foreach="periods" t-as="period" class="text-center">
+                                        <t t-esc="period['period']"/>
+                                    </th>
+                                </tr>
+                                <tr class="not_attended_staff">
+                                    <th class="col-sm-4">
+                                        <strong>Labor Staff Not Attended Today</strong>
+                                    </th>
+                                    <th class="col-sm-4 sticky-col1"></th>
+                                    <th class="col-sm-4 sticky-col2"></th>
+                                    <th t-foreach="periods" t-as="period" class="text-center">
+                                        <!--                                <input type="text" data-name="not_attended_staff"-->
+                                        <!--                                       t-att-value="format_float(period['not_attended_staff'], {'precision': 2})"-->
+                                        <!--                                       style="background-color: #FFA500" class="text-right o_plp_save_not_attended_text"-->
+                                        <!--                                       t-att-data-date="period['date']" t-att-data-date_to="period['date_to']"-->
+                                        <!--                                       t-att-data-project_type="period['project_type']"-->
+                                        <!--                                />-->
+                                        <t t-attf-class="text-right"
+                                           t-esc="format_float(period['not_attended_staff'], {'precision': 2})"/>
+
+                                    </th>
+                                </tr>
+                                <tr class="vacant_staff">
+                                    <th class="col-sm-4">
+                                        <strong>Vacant Number Of Staff</strong>
+                                    </th>
+                                    <th class="col-sm-4 sticky-col1"></th>
+                                    <th class="col-sm-4 sticky-col2"></th>
+                                    <th t-foreach="periods" t-as="period" class="text-center">
+                                        <t t-attf-class="text-right"
+                                           t-esc="format_float(period['vacant_staff'], {'precision': 2})"/>
+                                    </th>
+                                </tr>
+
+                            </thead>
+                            <t t-foreach="projects" t-as="project">
+                                <tr class="project_allocation">
+                                    <th class="col-sm-4" style="width:25% !important">
+                                        <strong class="btn btn-lg btn-link o_plp_project_name"
+                                                t-att-data-project="project[0].id"
+                                                t-esc="project[0].name_get()[0][1]"/>
+                                    </th>
+                                    <t t-if="project_type=='cleaning'">
+                                        <td t-attf-class="sticky-col1 text-right #{(project[0].total_cleaning_estimated_workers&lt;0) and 'table-danger' or 'table-light'}">
+                                            <t t-esc="format_float(project[0].total_cleaning_estimated_workers, {'precision': 2})"/>
+                                        </td>
+                                        <td t-attf-class="sticky-col2 text-right #{(project[0].total_cleaning_estimated_workers&lt;project[0].total_cleaning_allocated_workers) and 'table-danger' or (project[0].total_cleaning_estimated_workers&gt;project[0].total_cleaning_allocated_workers) and 'table-success' or 'table-light'}">
+
+                                            <t t-attf-class="text-right"
+                                               t-esc="format_float(project[0].total_cleaning_allocated_workers, {'precision': 2})"/>
+                                        </td>
+
+                                    </t>
+                                    <t t-if="project_type=='marble'">
+                                        <td t-attf-class="sticky-col1 text-right #{(project[0].total_marble_estimated_workers&lt;0) and 'table-danger' or 'table-light'}">
+                                            <t t-esc="format_float(project[0].total_marble_estimated_workers, {'precision': 2})"/>
+                                        </td>
+                                        <td t-attf-class="sticky-col2 text-right #{(project[0].total_marble_estimated_workers&lt;project[0].total_marble_estimated_workers) and 'table-danger' or (project[0].total_marble_estimated_workers&gt;project[0].total_marble_estimated_workers) and 'table-success' or 'table-light'}">
+
+                                            <t t-attf-class="text-right"
+                                               t-esc="format_float(project[0].total_marble_allocated_workers, {'precision': 2})"/>
+                                        </td>
+
+                                    </t>
+                                    <t t-if="project_type==False">
+                                        <td t-attf-class="sticky-col1 text-right #{(project[0].total_estimated_workers&lt;0) and 'table-danger' or 'table-light'}">
+                                            <t t-esc="format_float(project[0].total_estimated_workers, {'precision': 2})"/>
+                                        </td>
+                                        <td t-attf-class="sticky-col2 text-right #{(project[0].total_estimated_workers&lt;project[0].total_allocated_workers) and 'table-danger' or (project[0].total_estimated_workers&gt;project[0].total_allocated_workers) and 'table-success' or 'table-light'}">
+
+                                            <t t-attf-class="text-right"
+                                               t-esc="format_float(project[0].total_allocated_workers, {'precision': 2})"/>
+                                        </td>
+
+                                    </t>
+                                    <!--                                     <t t-attf-class="text-right" t-esc="format_float(project[2], {'precision': 2})"/>-->
+                                    <td t-foreach="project[1]" t-as="item" class="text-right">
+                                        <input type="text" data-name="allocation_qty" onfocus="this.select()"
+                                               t-att-value="format_float(item['allocation'], {'precision': 2})"
+                                               style="background-color: FFFFFF"
+                                               class="text-right o_plp_save_input_text"
+                                               t-att-data-date="item['date']" t-att-data-date_to="item['date_to']"
+                                               t-att-data-project="project[0].id"
+                                               t-att-data-project_type="project_type"/>
+                                    </td>
+                                </tr>
+                                <tr class="project_overtime">
+                                    <th style="border-top-style:hidden;">
+                                        <span style="margin-left:135px;">Overtime</span>
+                                    </th>
+                                    <td class="sticky-col1 table-light"></td>
+                                    <td class="sticky-col2 table-light"></td>
+                                    <td t-foreach="project[1]" t-as="item" class="text-right">
+                                        <input type="text" data-name="overtime" onfocus="this.select()"
+                                               t-att-value="format_float(item['overtime'], {'precision': 2})"
+                                               style="background-color: FFFFFF"
+                                               class="text-right o_plp_save_input_text"
+                                               t-att-data-date="item['date']" t-att-data-date_to="item['date_to']"
+                                               t-att-data-project="project[0].id"
+                                               t-att-data-project_type="project_type"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+ 
+</odoo>

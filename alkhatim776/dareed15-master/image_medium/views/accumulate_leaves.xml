@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bi_accumulate_leaves_form_view" model="ir.ui.view">
+            <field name="name">accumulate.leaves.form.view</field>
+            <field name="model">accumulate.leaves</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_approve" class="oe_highlight" type="object" string="Approve"
+                                states="draft"/>
+                        <button name="action_cancel" type="object" states="draft,approved" string="cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,paid"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+
+                        </div>
+                        <field name="image_medium" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <label for="employee_id"/>
+                            <h2>
+                                <field name="employee_id" required="1" options="{'no_create': True}"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </h2>
+                        </div>
+                        <group col="4">
+                            <field name="last_accumulate_date" readonly="1"/>
+                            <field name="accumulate_date"/>
+                            <field name="payslip_id" attrs="{'invisible': [('state', '!=', 'paid')]}"/>
+
+                            <!--<field name=""/>-->
+                        </group>
+                        <notebook>
+                            <page string="Leaves">
+                                <field name="lines_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree>
+                                        <field name="acc_leaves_id" invisible="1"/>
+                                        <field name="employee_id" invisible="1"/>
+                                        <field name="contract_id" domain="[('employee_id','=',employee_id)]"
+                                               options="{'no_create': True}"/>
+                                        <field name="amount_rate" string="Rate Amount"/>
+                                        <field name="days"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <div class="oe_title">
+                                                <label for="employee_id"/>
+                                                <h2>
+                                                    <field name="employee_id"/>
+                                                </h2>
+                                            </div>
+                                            <group col="4">
+                                                <field name="contract_id" options="{'no_create': True}"
+                                                       domain="[('employee_id','=',employee_id)]"/>
+                                                <field name="acc_leaves_id" invisible="1"/>
+                                                <label for="amount_rate"/>
+                                                <div>
+                                                    <field name="amount_rate" class="oe_inline"/>
+                                                    / day
+                                                </div>
+                                            </group>
+                                            <field name="lines_ids">
+                                                <tree editable="top" create="0">
+                                                    <field name="leave_type_id" options="{'no_create': True}"
+                                                           required="1"/>
+                                                    <field name="days"/>
+                                                </tree>
+                                            </field>
+                                            <group class="oe_subtotal_footer oe_right">
+                                                <field name="days"/>
+                                                <field name="amount"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_days"/>
+                                    <field name="total_amount"/>
+                                </group>
+
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="bi_accumulate_leaves_tree_view" model="ir.ui.view">
+            <field name="name">accumulate.leaves.tree</field>
+            <field name="model">accumulate.leaves</field>
+            <field name="arch" type="xml">
+                <tree string="Overtime" decoration-danger="state=='cancel'" decoration-success="state=='paid'">
+                    <field name="employee_id"/>
+                    <field name="accumulate_date"/>
+                    <field name="total_amount" sum="Total Amount"/>
+                    <field name="total_days" sum="Total Days"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bi_hr_accumulate_leaves_view_action" model="ir.actions.act_window">
+            <field name="name">Accumulate Leaves</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">accumulate.leaves</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="bi_accumulate_leaves_parent_menu" name="Accumulate Leaves" parent="hr.menu_hr_root"
+                  action="bi_hr_accumulate_leaves_view_action"/>
+    </data>
+</odoo>

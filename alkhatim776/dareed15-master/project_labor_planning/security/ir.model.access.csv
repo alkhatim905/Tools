@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_allocation_user,project.allocation.user,project_labor_planning.model_project_allocation,project.group_project_user,1,0,0,0
+access_project_allocation_manager,project.allocation.manager,project_labor_planning.model_project_allocation,project.group_project_manager,1,1,1,1
+access_not_attended_staff_user,not.attended.staff.user,project_labor_planning.model_not_attended_staff,project.group_project_user,1,0,0,0
+access_not_attended_staff_manager,not.attended.staff.manager,project_labor_planning.model_not_attended_staff,project.group_project_manager,1,1,1,1
+access_plp_config_settings_user,access_plp_config_settings_user,model_plp_config_settings,project.group_project_user,1,0,0,0
+access_plp_config_settings,access_plp_config_settings,model_plp_config_settings,project.group_project_manager,1,1,1,1

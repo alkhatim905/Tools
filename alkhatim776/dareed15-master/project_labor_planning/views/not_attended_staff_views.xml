@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+        <record id="daily_labor_staff_attendance_tree" model="ir.ui.view">
+            <field name="name">daily.labor.staff.attendance.tree</field>
+            <field name="model">not.attended.staff</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="date"/>
+                    <field name="project_type" required="True"/>
+                    <field name="not_attended_no"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search views -->
+        <record id="daily_labor_staff_attendance_search" model="ir.ui.view">
+            <field name="name">daily.labor.staff.attendance.search</field>
+            <field name="model">not.attended.staff</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date"/>
+                    <field name="project_type"/>
+                    <group expand="1" string="Group by">
+                        <filter string="Project Type" name="project_type" context="{'group_by': 'project_type'}"/>
+                    </group>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Menus and actions -->
+        <record id="action_daily_labor_staff_attendance" model="ir.actions.act_window">
+            <field name="name">Daily Labor Staff Attendance</field>
+            <field name="res_model">not.attended.staff</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="project_labor_planning.daily_labor_staff_attendance_search"/>
+            <field name="view_id" ref="project_labor_planning.daily_labor_staff_attendance_tree"/>
+            <field name="context">{
+                'search_default_project_type': 0
+                }
+            </field>
+        </record>
+
+        <menuitem id="daily_labor_staff_attendance_menuitem"
+                  name="Daily Labor Staff Attendance"
+                  parent="project.menu_project_report"
+                  sequence="23"
+                  action="action_daily_labor_staff_attendance"/>
+
+    </data>
+</odoo>

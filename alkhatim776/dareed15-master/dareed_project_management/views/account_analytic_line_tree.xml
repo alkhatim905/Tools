@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    <record id="making_unit_amount_in_days" model="ir.ui.view">-->
+<!--        <field name="name">Making Unit Amount In Days</field>-->
+<!--        <field name="model">account.analytic.line</field>-->
+<!--        <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='unit_amount']" position="replace">-->
+<!--                <field name="unit_amount" string="Duration (Days)" sum="Total"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

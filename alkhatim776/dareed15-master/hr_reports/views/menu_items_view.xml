@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="employee_payroll_report_menu" name="Employees Payroll Report" parent="hr_payroll.menu_hr_payroll_report"
+                  action="emp_payslip_report_wizard_action" sequence="2"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="bi_payslip_form_inherit_view" model="ir.ui.view">
+            <field name="name">bi.hr.payslip.form.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Details" invisible="0">
+                        <group col="4" string="Leaves">
+                            <field name="absence_days" readonly="1"/>
+                            <field name="absence_amount" readonly="1"/>
+                            <field name="accumulate_leave_amount" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

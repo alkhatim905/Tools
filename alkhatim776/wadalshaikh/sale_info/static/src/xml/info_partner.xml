@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="partner_info.partner_info">
+  
+        <a role="button" tabindex="0" class="o_partner_info_button fa fa-dollar"  style="margin-right:5px;" aria-label="Info" title="تفاصيل المنتج:" data-toggle="tooltip">
+           <!-- <i t-attf-class="fa fa-dollar"/> -->
+        </a>
+
+
+
+        
+    </t>
+
+     <t t-name="partner_info.PaymentPopOver" >
+        <div >
+            <table dir="rtl">
+                <tr>
+                    <td><strong>سعر اخر بيع : </strong></td>
+                    <td>
+                        <t t-if="so">
+                            <t t-esc="so"/>
+                        </t>
+                       
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>سعر اخر بيع للعميل الحالي : </strong></td>
+                    <td>
+                        <t t-if="so_partner">
+                            <t t-esc="so_partner"/>
+                        </t>
+                       
+                    </td>
+                </tr>
+                 <tr>
+                   
+                </tr>
+                 <tr>
+                    <td><strong>سعر  اخر شراء للعميل الحالي :</strong></td>
+                    <td>
+                       <t t-if="po">
+                            <t t-esc="po"/>
+                        </t>
+                    </td>
+                </tr>
+                <tr>
+                   
+                </tr>
+                  <tr>
+                    <td><strong>  سعر متوسط التكلفة: </strong></td>
+                    <td>
+                     
+                            <t t-esc="product_cost"/>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    
+                </tr>
+            </table>
+        </div>
+      
+    </t>
+
+    
+
+</templates>
